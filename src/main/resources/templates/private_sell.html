@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+</head>
+<body>
+<div class="container-fluid">
+    <header>
+        <th:block th:include="~{fragments/navbar}"></th:block>
+    </header>
+    <main>
+        <div class="jumbotron mt-4">
+            <div class="container-fluid ">
+                <!--<div class="tabs">-->
+                <div>
+                    <ul>
+                        <li><a th:href="@{#private-sell-word}"> How can I find
+                            out
+                            what
+                            my
+                            property is worth?
+                        </a></li>
+                        <li><a th:href="@{#private-sell-privately}" data-tab="2" class="tab"> What does Sotheby's sell
+                            privately?
+                        </a></li>
+                        <li><a th:href="@{#private-sell-property}"> How do you determine whether a
+                            private
+                            sale
+                            or
+                            an auction is the
+                            most suitable
+                            method for selling my
+                            property?
+                        </a></li>
+                        <li><a th:href="@{#private-sell-find-buyer}">
+                            How will you find a buyer for my property?
+                        </a></li>
+                        <li><a th:href="@{#private-sell-time}">
+                            How long will it take to sell my property?
+                        </a></li>
+                        <li><a th:href="@{#private-sell-contact}"> How long will it take to
+                            sell
+                            my
+                            property?
+                        </a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="" id="private-sell-word">
+                        <h5>
+                            How can I find out what my property is worth?
+                        </h5>
+                        <p>
+                            We will gladly evaluate the work you are considering selling privately. For general
+                            enquiries about the value of your property, please complete an estimate request form
+                            according to the directions provided, which includes submitting clear colour photographs
+                            and
+                            images of details such as signatures, maker’s marks and areas of damage. For other
+                            enquiries
+                            specific to private (non-auction) sales, email us at privatesales@sothebys.com.
+                        </p>
+                    </div>
+                    <div class="" id="private-sell-privately">
+                        <h5>
+                            What does Sotheby's sell privately?
+                        </h5>
+                        <p>
+                            Sotheby’s offers private sales in all the categories in which we also conduct auctions.
+                            These include Impressionist & modern art, old master paintings, contemporary art,
+                            jewellery,
+                            furniture, antiquities, African art and watches.
+                        </p>
+                    </div>
+                    <div class="" id="private-sell-property">
+                        <h5>How do you determine whether a private sale or an auction is the most suitable method
+                            for
+                            selling my property? How can I find out what my property is worth?
+                        </h5>
+                        <p>
+                            After Sotheby’s specialists examine and appraise your property, they will assess the
+                            best
+                            method for offering your work and achieving your goals. Our specialists will work with
+                            you
+                            to develop a personalised sale strategy that will be the most beneficial for your
+                            specific
+                            needs based on their unique market access and global insights. All private sale
+                            enquiries
+                            are treated with the utmost privacy and confidentiality.
+                        </p>
+                    </div>
+                    <div class="" id="private-sell-find-buyer">
+                        <h5>
+                            How will you find a buyer for my property?
+                        </h5>
+                        <p>
+                            When you consign a work to Sotheby’s for private sale, we will present you with an
+                            agreement
+                            outlining our exclusive right to offer the work for a specified period of time.
+                            Sotheby’s
+                            will then begin to discreetly offer your property to individual potential purchasers,
+                            one at
+                            a time, while keeping you informed of our progress.
+                        </p>
+                    </div>
+                    <div class="" id="private-sell-time">
+                        <h5>
+                            How long will it take to sell my property?
+                        </h5>
+                        <p>
+                            We will do our utmost to quickly find a buyer for your property, but the timing may vary
+                            depending on market demand for your object.
+                        </p>
+                    </div>
+                </div>
+                <!--</div>-->
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>
+
+<!--<script>-->
+<!--$(function () {-->
+
+<!--$('[data-tab]').on('click', function (e) {-->
+<!--$(this).addClass('active').siblings('[data-tab]').removeClass('active')-->
+<!--$(this).siblings('[data-content=' + $(this).data('tab') + ']').addClass('active').siblings('[data-content]').removeClass('active')-->
+<!--e.preventDefault()-->
+<!--})-->
+
+<!--})-->
+<!--</script>-->
