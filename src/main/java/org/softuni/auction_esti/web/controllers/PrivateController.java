@@ -5,17 +5,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Locale;
+import java.util.Map;
+
 @Controller
 @RequestMapping("/private")
 public class PrivateController extends BaseController {
 
     @GetMapping("/sell")
-    public ModelAndView sell() {
+    public ModelAndView sell(Map<String, Locale> modal) {
         return super.view("private_sell");
     }
 
     @GetMapping("/buy")
-    public ModelAndView buy() {
+    public ModelAndView buy(Map<String, Locale> modal)
+    {
         return super.view("private_buy");
     }
 }
