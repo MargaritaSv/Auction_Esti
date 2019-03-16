@@ -6,6 +6,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "auction")
 public class Auction {
+
     private Integer id;
     private String name;
     private String place;
@@ -34,6 +35,7 @@ public class Auction {
         this.name = name;
     }
 
+    @Column(name = "place")
     public String getPlace() {
         return place;
     }
@@ -42,6 +44,7 @@ public class Auction {
         this.place = place;
     }
 
+    @Column(name = "date")
     public LocalDate getDate() {
         return date;
     }

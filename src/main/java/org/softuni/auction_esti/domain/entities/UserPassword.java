@@ -1,10 +1,8 @@
 package org.softuni.auction_esti.domain.entities;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity(name = "user_password")
 public class UserPassword {
 
     private Integer id;
@@ -13,7 +11,6 @@ public class UserPassword {
 
     public UserPassword() {
     }
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +23,9 @@ public class UserPassword {
         this.id = id;
     }
 
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     public User getUserId() {
         return userId;
     }
@@ -34,6 +34,7 @@ public class UserPassword {
         this.userId = userId;
     }
 
+    @Column(name = "password")
     public String getPassword() {
         return password;
     }

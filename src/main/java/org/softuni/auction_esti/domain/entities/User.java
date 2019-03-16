@@ -14,6 +14,7 @@ public class User {
     private String secondAddress;
     private String Education;
     private String cardNumber;
+    private UserPassword userPassword;
 
     public User() {
     }
@@ -90,6 +91,15 @@ public class User {
 
     public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
+    }
+
+    @OneToOne(mappedBy = "user")
+    public UserPassword getUserPassword() {
+        return userPassword;
+    }
+
+    public void setUserPassword(UserPassword userPassword) {
+        this.userPassword = userPassword;
     }
 }
 

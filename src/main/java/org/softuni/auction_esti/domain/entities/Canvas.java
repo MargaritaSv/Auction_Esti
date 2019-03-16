@@ -5,36 +5,19 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "canvas")
-public class Canvas {
+public class Canvas extends AuctionObject {
 
-    private Integer id;
-    private String name;
     private String author;
-    private LocalDate dateCreated;
-    private String urlImage;
+    private LocalDate paintedTo;
+    private LocalDate paintedFrom;
+    private Integer width;
+    private Integer height;
+    private String description;
 
     public Canvas() {
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true, updatable = false)
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
+    @Column(name = "author")
     public String getAuthor() {
         return author;
     }
@@ -43,19 +26,48 @@ public class Canvas {
         this.author = author;
     }
 
-    public LocalDate getDateCreated() {
-        return dateCreated;
+    @Column(name = "painted_to")
+    public LocalDate getPaintedTo() {
+        return paintedTo;
     }
 
-    public void setDateCreated(LocalDate dateCreated) {
-        this.dateCreated = dateCreated;
+    public void setPaintedTo(LocalDate paintedTo) {
+        this.paintedTo = paintedTo;
     }
 
-    public String getUrlImage() {
-        return urlImage;
+    @Column(name = "painted_from")
+    public LocalDate getPaintedFrom() {
+        return paintedFrom;
     }
 
-    public void setUrlImage(String urlImage) {
-        this.urlImage = urlImage;
+    public void setPaintedFrom(LocalDate paintedFrom) {
+        this.paintedFrom = paintedFrom;
+    }
+
+    @Column(name = "width",  nullable = false)
+    public Integer getWidth() {
+        return width;
+    }
+
+    public void setWidth(Integer width) {
+        this.width = width;
+    }
+
+    @Column(name = "height", nullable = false)
+    public Integer getHeight() {
+        return height;
+    }
+
+    public void setHeight(Integer height) {
+        this.height = height;
+    }
+
+    @Column(name = "description", columnDefinition = "TEXT")
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
