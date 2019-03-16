@@ -229,7 +229,7 @@ footer .copyright a:hover {
     color: #e00966;
 }
 
-#private-head {
+#main-head {
     content: "";
     display: block;
     min-height: 200px;
@@ -238,7 +238,7 @@ footer .copyright a:hover {
     box-shadow: inset 0 -1px 5px rgba(0, 0, 0, 0.6);
 }
 
-#private-head h1 {
+#main-head h1 {
     font-size: 34px;
     color: #fff;
     line-height: 0.879em;
@@ -247,7 +247,7 @@ footer .copyright a:hover {
     padding-top: 100px;
 }
 
-#private-head h1 span {
+#main-head h1 span {
     color: #fff;
     display: block;
 }
@@ -362,8 +362,23 @@ footer .copyright a:hover {
     height: 16px;
 }
 
-.work, .home, .contact {
+.private {
     background: url("../images/oppositretes_of_white_Roni_Horn.jpg");
+    background-size: cover;
+}
+
+.watch {
+    background: url("../images/IWC_pilot_watch.jpg");
+    background-size: cover;
+}
+
+.wine {
+    background: url("../images/wine_cover.jpg");
+    background-size: cover;
+}
+
+.canvas {
+    background: url("../images/rocks_gloucester_Stuart_Davis.jpg");
     background-size: cover;
 }
 
@@ -383,7 +398,7 @@ footer .copyright a:hover {
         position: relative;
     }
 
-    #private-head {
+    #main-head {
         min-height: 250px;
     }
 

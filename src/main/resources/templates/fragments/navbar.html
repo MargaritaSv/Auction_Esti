@@ -36,13 +36,15 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navDepartment" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       data-th-text="#{navbar_departments.lang}">
                         Departments
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navDepartment">
-                        <a class="dropdown-item" href="#" data-th-text="#{navbar_canvas.lang}">Canvas</a>
-                        <a class="dropdown-item" href="#" data-th-text="#{navbar_wine.lang}">Wine</a>
-                        <!--<a class="dropdown-item" href="#" data-th-text="#{navbar_wаtches.lang}">Watches</a>-->
+                        <a class="dropdown-item" th:href="@{/department/canvas}" data-th-text="#{navbar_canvas.lang}">Canvas</a>
+                        <a class="dropdown-item" th:href="@{/department/wines}"
+                           data-th-text="#{navbar_wine.lang}">Wine</a>
+                        <a class="dropdown-item" th:href="@{/department/watches}" data-th-text="#{navbar_watches.lang}">Watches</a>
                     </div>
                 </li>
 
