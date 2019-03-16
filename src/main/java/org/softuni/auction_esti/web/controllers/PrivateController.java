@@ -18,8 +18,12 @@ public class PrivateController extends BaseController {
     }
 
     @GetMapping("/buy")
-    public ModelAndView buy(Map<String, Locale> modal)
-    {
+    public ModelAndView buy(Map<String, Locale> modal) {
         return super.view("private_buy");
+    }
+
+    @GetMapping("/overview")
+    public ModelAndView overview(Map<String, Locale> modal) {
+        return super.view("overview");
     }
 }

@@ -1,26 +1,4 @@
 <th:block th:fragment>
-    <!--<nav class="navbar navbar-expand-lg re-background">-->
-    <!--<a class="navbar-brand" text-white th:href="@{/}">Resident Evil</a>-->
-    <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"-->
-    <!--aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
-    <!--<span class="navbar-toggler-icon"></span>-->
-    <!--</button>-->
-
-    <!--<div class="collapse navbar-collapse" id="navbarSupportedContent">-->
-    <!--<ul class="navbar-nav mr-auto">-->
-    <!--<li class="nav-item dropdown">-->
-    <!--<a class="nav-link dropdown-toggle" th:href="@{/}" id="navbarDropdown" role="button"-->
-    <!--data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-    <!--Viruses-->
-    <!--</a>-->
-    <!--<div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-    <!--<a class="dropdown-item" th:href="@{/viruses/show}">Show</a>-->
-    <!--<a class="dropdown-item" th:href="@{viruses/add}">Add</a>-->
-    <!--</div>-->
-    <!--</li>-->
-    <!--</ul>-->
-    <!--</div>-->
-    <!--</nav>-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -34,25 +12,26 @@
                     <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Log in</a>
+                    <a class="nav-link" href="#" data-th-text="#{navbar_log_in.lang}">Log in</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">BUY</a>
+                    <a class="nav-link" href="#" data-th-text="#{navbar_buy.lang}">BUY</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Log in</a>
+                    <a class="nav-link" href="#" data-th-text="#{navbar_sell.lang}">SELL</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Private Sales
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       data-th-text="#{navbar_private.lang}">
+                        Private
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" th:href="@{/}">overview</a>
-                        <a class="dropdown-item" th:href="@{/private/buy}">BUY</a>
-                        <a class="dropdown-item" th:href="@{/private/sell}">SELL</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" th:href="@{/private/overview}" data-th-text="#{navbar_overview.lang}">overview</a>
+                        <a class="dropdown-item" th:href="@{/private/buy}"
+                           data-th-text="#{navbar_private_buy.lang}">private buy</a>
+                        <a class="dropdown-item" th:href="@{/private/sell}" data-th-text="#{navbar_private_sell.lang}">Private
+                            sell</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -61,9 +40,9 @@
                         Departments
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navDepartment">
-                        <a class="dropdown-item" href="#">Canvas</a>
-                        <a class="dropdown-item" href="#">Wine</a>
-                        <a class="dropdown-item" href="#">Watches</a>
+                        <a class="dropdown-item" href="#" data-th-text="#{navbar_canvas.lang}">Canvas</a>
+                        <a class="dropdown-item" href="#" data-th-text="#{navbar_wine.lang}">Wine</a>
+                        <!--<a class="dropdown-item" href="#" data-th-text="#{navbar_wаtches.lang}">Watches</a>-->
                     </div>
                 </li>
 
