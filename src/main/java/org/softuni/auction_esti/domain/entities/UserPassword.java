@@ -7,6 +7,7 @@ public class UserPassword {
 
     private Integer id;
     private User userId;
+    private String nickname;
     private String password;
 
     public UserPassword() {
@@ -24,7 +25,7 @@ public class UserPassword {
     }
 
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     public User getUserId() {
         return userId;
@@ -32,6 +33,15 @@ public class UserPassword {
 
     public void setUserId(User userId) {
         this.userId = userId;
+    }
+
+    @Column(name = "nickname", nullable = false, unique = true, updatable = false)
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     @Column(name = "password")

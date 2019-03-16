@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @MappedSuperclass
-public class AuctionObject {
+public abstract class AuctionObject {
 
     private Integer id;
     private String name;
@@ -54,7 +54,8 @@ public class AuctionObject {
         this.estimateFrom = estimateFrom;
     }
 
-    @Column(name = "estimate_by")
+    @ManyToOne(targetEntity = User.class)
+    @JoinColumn(name = "estimate_by", referencedColumnName = "id")
     public User getEstimatedBy() {
         return estimatedBy;
     }
