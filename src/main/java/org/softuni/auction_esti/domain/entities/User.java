@@ -14,9 +14,6 @@ public class User {
     private String secondAddress;
     private String Education;
     private String cardNumber;
-    //  private UserPassword userPassword;
-
-    //  private AuctionObject auctionObject;
 
     public User() {
     }

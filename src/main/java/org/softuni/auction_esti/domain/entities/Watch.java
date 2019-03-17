@@ -1,22 +1,23 @@
 package org.softuni.auction_esti.domain.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "watches")
-public class Watche extends AuctionObject {
+public class Watch extends AuctionObject {
 
     private String dial;
     private String caliber;
-    private String watcheCase;
+    private String watchCase;
     private String closure;
     private Integer dimensions;
-    private WatcheCollection collection;
+    private WatchCollection collection;
 
-    public Watche() {
+    public Watch() {
     }
 
+
+    @Column(name = "dial")
     public String getDial() {
         return dial;
     }
@@ -25,6 +26,7 @@ public class Watche extends AuctionObject {
         this.dial = dial;
     }
 
+    @Column(name = "caliber")
     public String getCaliber() {
         return caliber;
     }
@@ -33,14 +35,16 @@ public class Watche extends AuctionObject {
         this.caliber = caliber;
     }
 
-    public String getWatcheCase() {
-        return watcheCase;
+    @Column(name = "watch_case")
+    public String getWatchCase() {
+        return watchCase;
     }
 
-    public void setWatcheCase(String watcheCase) {
-        this.watcheCase = watcheCase;
+    public void setWatchCase(String watchCase) {
+        this.watchCase = watchCase;
     }
 
+    @Column(name = "closure")
     public String getClosure() {
         return closure;
     }
@@ -49,6 +53,7 @@ public class Watche extends AuctionObject {
         this.closure = closure;
     }
 
+    @Column(name = "dimentions")
     public Integer getDimensions() {
         return dimensions;
     }
@@ -57,11 +62,13 @@ public class Watche extends AuctionObject {
         this.dimensions = dimensions;
     }
 
-    public WatcheCollection getCollection() {
+    @Enumerated(EnumType.STRING)
+    @Column(name = "collection")
+    public WatchCollection getCollection() {
         return collection;
     }
 
-    public void setCollection(WatcheCollection collection) {
+    public void setCollection(WatchCollection collection) {
         this.collection = collection;
     }
 }
