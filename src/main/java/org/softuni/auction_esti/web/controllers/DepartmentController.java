@@ -31,15 +31,15 @@ public class DepartmentController extends BaseController {
     }
 
     @GetMapping("/watches")
-    public ModelAndView watches(ModelAndView modelAndView, Map<String, Local> map) {
+    public ModelAndView watches(Map<String, Local> map) {
         List<WatchViewModel> watchViewModelList = this.watchService.findAll()
                 .stream()
                 .map(w -> this.modelMapper.map(w, WatchViewModel.class))
                 .collect(Collectors.toList());
 
-        modelAndView.addObject(watchViewModelList);
+        //   modelAndView.addObject("watches", watchViewModelList);
 
-        return super.view("watches", modelAndView);
+        return super.view("watches", watchViewModelList, null);
     }
 
 

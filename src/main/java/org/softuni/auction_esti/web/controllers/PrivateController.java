@@ -24,6 +24,7 @@ public class PrivateController extends BaseController {
 
     @GetMapping("/overview")
     public ModelAndView overview(Map<String, Locale> modal) {
+
         return super.view("overview");
     }
 }
