@@ -1,5 +1,7 @@
 package org.softuni.auction_esti.domain.entities;
 
+import org.softuni.auction_esti.domain.entities.enums.WatchCollection;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,7 +17,6 @@ public class Watch extends AuctionObject {
 
     public Watch() {
     }
-
 
     @Column(name = "dial")
     public String getDial() {

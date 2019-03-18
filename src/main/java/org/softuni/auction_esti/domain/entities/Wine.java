@@ -1,5 +1,7 @@
 package org.softuni.auction_esti.domain.entities;
 
+import org.softuni.auction_esti.domain.entities.enums.WineCollections;
+
 import javax.persistence.*;
 
 @Entity

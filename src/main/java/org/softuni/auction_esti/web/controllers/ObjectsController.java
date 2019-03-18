@@ -1,6 +1,6 @@
 package org.softuni.auction_esti.web.controllers;
 
-import org.softuni.auction_esti.config.NoCaptcha;
+import org.softuni.auction_esti.annotations.NoCaptcha;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

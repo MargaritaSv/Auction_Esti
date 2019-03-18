@@ -19,6 +19,9 @@ public class BaseController {
     }
 
     protected ModelAndView redirect(String url) {
-        return this.view("redirect:" + url);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:" + url);
+
+        return modelAndView;
     }
 }

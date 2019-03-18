@@ -1,36 +1,18 @@
-package org.softuni.auction_esti.domain.entities;
+package org.softuni.auction_esti.domain.models.binding;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "users")
-public class User {
-
-    private Integer id;
+public class UserRegisterBindingModel {
     private String firstName;
     private String middleName;
     private String lastName;
     private String primaryAddress;
     private String secondAddress;
-    // private String Education;
     private String email;
-    private String cardNumber;
+    private String password;
+    private String passwordConfirm;
 
-    public User() {
+    public UserRegisterBindingModel() {
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true, updatable = false)
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    @Column(name = "first_name")
     public String getFirstName() {
         return firstName;
     }
@@ -39,7 +21,6 @@ public class User {
         this.firstName = firstName;
     }
 
-    @Column(name = "middle_name")
     public String getMiddleName() {
         return middleName;
     }
@@ -48,7 +29,6 @@ public class User {
         this.middleName = middleName;
     }
 
-    @Column(name = "last_name")
     public String getLastName() {
         return lastName;
     }
@@ -57,7 +37,6 @@ public class User {
         this.lastName = lastName;
     }
 
-    @Column(name = "primary_address")
     public String getPrimaryAddress() {
         return primaryAddress;
     }
@@ -66,7 +45,6 @@ public class User {
         this.primaryAddress = primaryAddress;
     }
 
-    @Column(name = "second_address")
     public String getSecondAddress() {
         return secondAddress;
     }
@@ -75,16 +53,6 @@ public class User {
         this.secondAddress = secondAddress;
     }
 
-//    @Column(name = "education")
-//    public String getEducation() {
-//        return Education;
-//    }
-//
-//    public void setEducation(String education) {
-//        Education = education;
-//    }
-
-    @Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -93,13 +61,19 @@ public class User {
         this.email = email;
     }
 
-    @Column(name = "card_number")
-    public String getCardNumber() {
-        return cardNumber;
+    public String getPassword() {
+        return password;
     }
 
-    public void setCardNumber(String cardNumber) {
-        this.cardNumber = cardNumber;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
     }
 }
-

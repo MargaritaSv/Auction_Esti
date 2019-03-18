@@ -1,6 +1,6 @@
 package org.softuni.auction_esti.interceptors;
 
-import org.softuni.auction_esti.config.NoCaptcha;
+import org.softuni.auction_esti.annotations.NoCaptcha;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.ModelAndView;

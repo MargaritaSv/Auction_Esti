@@ -1,4 +1,4 @@
-package org.softuni.auction_esti.config;
+package org.softuni.auction_esti.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

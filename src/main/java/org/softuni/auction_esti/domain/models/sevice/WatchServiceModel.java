@@ -1,7 +1,7 @@
 package org.softuni.auction_esti.domain.models.sevice;
 
 import org.softuni.auction_esti.domain.entities.User;
-import org.softuni.auction_esti.domain.entities.WatchCollection;
+import org.softuni.auction_esti.domain.entities.enums.WatchCollection;
 
 import java.math.BigDecimal;
 
