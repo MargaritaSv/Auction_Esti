@@ -1,7 +1,10 @@
 package org.softuni.auction_esti.web.controllers;
 
 import org.softuni.auction_esti.annotations.NoCaptcha;
+import org.softuni.auction_esti.domain.models.binding.UserLoginBindingModel;
 import org.softuni.auction_esti.domain.models.binding.UserRegisterBindingModel;
+import org.softuni.auction_esti.domain.models.sevice.UserPasswordServiceModel;
+import org.softuni.auction_esti.domain.models.sevice.UserServiceModel;
 import org.softuni.auction_esti.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,13 +30,20 @@ public class UserController extends BaseController {
         return this.view("login");
     }
 
-    //    @PostMapping("/login")
-//    public ModelAndView login() {
-//    }
-//
+    @NoCaptcha
+    @PostMapping("/login")
+    public ModelAndView loginConfirm(@ModelAttribute UserLoginBindingModel userLoginBindingModel) {
+        UserPasswordServiceModel userFromDB = this.userService.logUser(userLoginBindingModel.getNickname());
+
+        if (userFromDB == null || !userFromDB.getPassword().equals(userLoginBindingModel.getPassword())) {
+            return this.view("/user/login");
+        }
+
+        return this.redirect("/");
+    }
+
     @GetMapping("/register")
     public ModelAndView register() {
-        System.out.println("------ GET MAPPING");
         return this.view("register");
     }
 
