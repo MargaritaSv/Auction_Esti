@@ -1,5 +1,8 @@
 package org.softuni.auction_esti.domain.models.binding;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 public class UserLoginBindingModel {
 
     private String nickname;
@@ -8,6 +11,8 @@ public class UserLoginBindingModel {
     public UserLoginBindingModel() {
     }
 
+    @NotNull
+    @NotEmpty(message = "Name is required")
     public String getNickname() {
         return nickname;
     }
@@ -16,6 +21,8 @@ public class UserLoginBindingModel {
         this.nickname = nickname;
     }
 
+    @NotNull
+    @NotEmpty(message = "Password is required")
     public String getPassword() {
         return password;
     }

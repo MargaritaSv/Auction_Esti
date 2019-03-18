@@ -8,11 +8,16 @@ import org.softuni.auction_esti.domain.models.sevice.UserServiceModel;
 import org.softuni.auction_esti.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.validation.Valid;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/user")
@@ -32,7 +37,19 @@ public class UserController extends BaseController {
 
     @NoCaptcha
     @PostMapping("/login")
-    public ModelAndView loginConfirm(@ModelAttribute UserLoginBindingModel userLoginBindingModel) {
+    public ModelAndView loginConfirm(@Valid @ModelAttribute("user") UserLoginBindingModel userLoginBindingModel,
+                                     BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("model", bindingResult);
+            redirectAttributes.addFlashAttribute("errors", bindingResult.getFieldErrors()
+                    .stream()
+                    .map(e -> e.getDefaultMessage())
+                    .collect(Collectors.toList()));
+
+            return super.redirect("/user/login");
+        }
+
         UserPasswordServiceModel userFromDB = this.userService.logUser(userLoginBindingModel.getNickname());
 
         if (userFromDB == null || !userFromDB.getPassword().equals(userLoginBindingModel.getPassword())) {

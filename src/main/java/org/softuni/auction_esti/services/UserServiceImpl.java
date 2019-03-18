@@ -2,13 +2,13 @@ package org.softuni.auction_esti.services;
 
 import org.modelmapper.ModelMapper;
 import org.softuni.auction_esti.domain.entities.User;
-import org.softuni.auction_esti.domain.models.binding.UserLoginBindingModel;
 import org.softuni.auction_esti.domain.models.binding.UserRegisterBindingModel;
 import org.softuni.auction_esti.domain.models.sevice.UserPasswordServiceModel;
-import org.softuni.auction_esti.domain.models.sevice.UserServiceModel;
 import org.softuni.auction_esti.repository.UserPasswordRepository;
 import org.softuni.auction_esti.repository.UserRepository;
 import org.springframework.stereotype.Service;
+
+import javax.validation.Validator;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -16,11 +16,13 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
     private final UserPasswordRepository userPasswordRepository;
+    private final Validator validator;
 
-    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, UserPasswordRepository userPasswordRepository) {
+    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, UserPasswordRepository userPasswordRepository, Validator validator) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
         this.userPasswordRepository = userPasswordRepository;
+        this.validator = validator;
     }
 
     @Override
@@ -40,6 +42,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserPasswordServiceModel logUser(String nickname) {
+//        if (this.validator.validate()) {
+//        }
         return this.modelMapper.map(
                 this.userPasswordRepository.findByNickname(nickname), UserPasswordServiceModel.class);
     }

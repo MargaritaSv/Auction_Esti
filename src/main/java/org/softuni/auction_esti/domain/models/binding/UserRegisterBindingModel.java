@@ -1,5 +1,8 @@
 package org.softuni.auction_esti.domain.models.binding;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 public class UserRegisterBindingModel {
     private String firstName;
     private String middleName;
@@ -13,6 +16,8 @@ public class UserRegisterBindingModel {
     public UserRegisterBindingModel() {
     }
 
+    @NotNull
+    @NotEmpty(message = "name is required")
     public String getFirstName() {
         return firstName;
     }
@@ -21,6 +26,8 @@ public class UserRegisterBindingModel {
         this.firstName = firstName;
     }
 
+    @NotNull
+    @NotEmpty(message = "name is required")
     public String getMiddleName() {
         return middleName;
     }
@@ -29,6 +36,8 @@ public class UserRegisterBindingModel {
         this.middleName = middleName;
     }
 
+    @NotNull
+    @NotEmpty(message = "name is required")
     public String getLastName() {
         return lastName;
     }

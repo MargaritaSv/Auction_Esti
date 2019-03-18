@@ -1,25 +1,18 @@
-<!--<form th:method="POST" th:action="@{/login/create}" xmlns:th="http://www.thymleaf.org">-->
-<!--<input type="text" name="name">-->
-<!--<input type="password" name="password">-->
-
-<!--Num1<input name="number" disabled th:value="${num1}">-->
-<!--Num1<input name="number" disabled th:value="${num1}">-->
-<!--</br>-->
-<!--Sum<input name="number" name="sum">-->
-<!--<button type="submit">SUBMIT</button>-->
-<!--</form>-->
 <h1 class="text-center">Login</h1>
 <hr class="bg-resev hr-2"/>
-<form id="contact-form" class="w-25 mx-auto" th:method="post" th:action="@{/user/login}">
+<form id="contact-form" class="w-25 mx-auto" th:method="post" th:action="@{/user/login}" th:object="${user}">
+    <th:block th:each="error : ${errors}">
+        <h5 class="label label-danger text-danger" th:text="${error}"></h5>
+    </th:block>
     <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" class="form-control text-input" id="username" placeholder="Username..." name="nickname" required>
+        <input type="text" class="form-control text-input" id="username" placeholder="Username..." name="nickname">
     </div>
     <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" class="form-control text-input" id="password" placeholder="Password..." name="password" required>
+        <input type="password" class="form-control text-input" id="password" placeholder="Password..." name="password">
     </div>
     <div class="button-holder d-flex justify-content-around">
-        <button type="submit" class="btn btn-primary btn-input">Login</button>
+        <button type="submit" class="btn btn-primary bg-resev">Login</button>
     </div>
 </form>
