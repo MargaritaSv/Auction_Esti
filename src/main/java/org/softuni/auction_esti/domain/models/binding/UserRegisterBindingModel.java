@@ -46,6 +46,8 @@ public class UserRegisterBindingModel {
         this.lastName = lastName;
     }
 
+    @NotNull
+    @NotEmpty(message = "address is required")
     public String getPrimaryAddress() {
         return primaryAddress;
     }
@@ -70,6 +72,8 @@ public class UserRegisterBindingModel {
         this.email = email;
     }
 
+    @NotNull
+    @NotEmpty(message = "password is required")
     public String getPassword() {
         return password;
     }
@@ -78,6 +82,8 @@ public class UserRegisterBindingModel {
         this.password = password;
     }
 
+    @NotNull
+    @NotEmpty(message = "password confirm is required")
     public String getPasswordConfirm() {
         return passwordConfirm;
     }

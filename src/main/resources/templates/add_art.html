@@ -1,0 +1,44 @@
+<h1 class="text-center">Add Winr</h1>
+<hr class="bg-resev hr-2"/>
+<form class="w-50 mx-auto" th:method="post" th:action="@{/}" th:object="${viewModel}">
+    <div class="form-group" th:classappend="${#fields.hasErrors('name')}? 'text-danger'">
+        <label for="author">Author</label>
+        <input type="text" class="form-control text-input" th:field="*{author}" id="author" name="author">
+        <!--<small th:each="error : ${#fields.errors('author')}" th:text="${error}"></small>-->
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" class="form-control text-input" th:field="*{description}" id="description" name="description">
+        <!--<small th:each="error : ${#fields.errors('description')}" th:text="${error}"></small>-->
+    </div>
+    <div class=" form-group row">
+        <label for="paintedTo" class="col-sm-2 col-form-label">paintedTo</label>
+        <input type="number" class="form-control" id="paintedTo" th:fields="*{paintedTo}">
+    </div>
+
+    <div class=" form-group row">
+        <label for="paintedFrom" class="col-sm-2 col-form-label">paintedFrom</label>
+        <input type="number" class="form-control" id="paintedFrom" th:fields="*{paintedFrom}">
+    </div>
+    <div class=" form-group row">
+        <label for="width" class="col-sm-2 col-form-label">width</label>
+        <input type="number" class="form-control" id="width" th:fields="*{width}">
+        <!--<small th:each="error : ${#fields.errors('width')}" th:text="${error}"></small>-->
+    </div>
+    <div class=" form-group row">
+        <label for="height" class="col-sm-2 col-form-label">height</label>
+        <input type="number" class="form-control" id="height" th:fields="*{height}">
+        <!--<small th:each="error : ${#fields.errors('height')}" th:text="${error}"></small>-->
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('estimateFrom')}? 'text-danger'">
+        <label for="estimateFrom">Price to</label>
+        <input type="number" class="form-control text-input" th:field="*{estimateFrom}" id="estimateFrom"
+               name="estimateFrom">
+        <!--<small th:each="error : ${#fields.errors('estimateFrom')}" th:text="${error}"></small>-->
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('estimateTo')}? 'text-danger'">
+        <label for="estimateTo">Price from</label>
+        <input type="number" class="form-control text-input" th:field="*{estimateTo}" id="estimateTo" name="estimateTo">
+        <!--<small th:each="error : ${#fields.errors('estimateTo')}" th:text="${error}"></small>-->
+    </div>
+</form>

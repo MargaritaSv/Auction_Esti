@@ -1,6 +1,6 @@
 package org.softuni.auction_esti.config;
 
-import org.softuni.auction_esti.interceptors.CaptchaInterceptor;
+//import org.softuni.auction_esti.interceptors.CaptchaInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
@@ -11,12 +11,6 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
-
-    private final CaptchaInterceptor captchaInterceptor;
-
-    public WebConfig(CaptchaInterceptor captchaInterceptor) {
-        this.captchaInterceptor = captchaInterceptor;
-    }
 
     @Bean
     public LocaleResolver localeResolver() {
@@ -29,6 +23,6 @@ public class WebConfig implements WebMvcConfigurer {
         interceptor.setParamName("lang");
         registry.addInterceptor(interceptor);
 
-        registry.addInterceptor(captchaInterceptor);
+      //  registry.addInterceptor(captchaInterceptor);
     }
 }

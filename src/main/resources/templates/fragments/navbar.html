@@ -47,7 +47,22 @@
                         <a class="dropdown-item" th:href="@{/department/watches}" data-th-text="#{navbar_watches.lang}">Watches</a>
                     </div>
                 </li>
-
+                <li>
+                    <a class="nav-link dropdown-toggle" href="#" id="navDepartment" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                    >
+                        Service
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navDepartment">
+                        <a class="dropdown-item" th:href="@{/service/canvas}"
+                           data-th-text="#{navbar_canvas.lang}">Art</a>
+                        <a class="dropdown-item" th:href="@{/service/wine}"
+                           data-th-text="#{navbar_wine.lang}">Wine</a>
+                        <a class="dropdown-item" th:href="@{/service/service}" data-th-text="#{navbar_watches.lang}">Watches</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" th:href="@{/service/user}">User</a>
+                    </div>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navDepartment" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

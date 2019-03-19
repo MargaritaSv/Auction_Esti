@@ -14,6 +14,10 @@ public class BaseController {
         return modelAndView;
     }
 
+    protected ModelAndView view(String view, Object viewModel) {
+        return this.view(view, viewModel, null);
+    }
+
     protected ModelAndView view(String view) {
         return this.view(view, null, null);
     }

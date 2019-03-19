@@ -1,5 +1,8 @@
 package org.softuni.auction_esti.domain.models.sevice;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 public class UserServiceModel {
 
     private Integer id;

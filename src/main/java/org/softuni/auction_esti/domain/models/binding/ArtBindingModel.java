@@ -1,11 +1,11 @@
-package org.softuni.auction_esti.domain.entities;
+package org.softuni.auction_esti.domain.models.binding;
 
-import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "canvas")
-public class Canvas extends AuctionObject {
+public class ArtBindingModel extends AuctionObjectBindingModel {
 
     private String author;
     private LocalDate paintedTo;
@@ -14,10 +14,8 @@ public class Canvas extends AuctionObject {
     private Integer height;
     private String description;
 
-    public Canvas() {
-    }
-
-    @Column(name = "author")
+    @NotNull
+    @NotEmpty(message = "Author is required")
     public String getAuthor() {
         return author;
     }
@@ -26,7 +24,6 @@ public class Canvas extends AuctionObject {
         this.author = author;
     }
 
-    @Column(name = "painted_to")
     public LocalDate getPaintedTo() {
         return paintedTo;
     }
@@ -35,7 +32,6 @@ public class Canvas extends AuctionObject {
         this.paintedTo = paintedTo;
     }
 
-    @Column(name = "painted_from")
     public LocalDate getPaintedFrom() {
         return paintedFrom;
     }
@@ -44,7 +40,8 @@ public class Canvas extends AuctionObject {
         this.paintedFrom = paintedFrom;
     }
 
-    @Column(name = "width",  nullable = false)
+    @NotNull
+    @Size(min = 5, message = "width can't be less than 50mm")
     public Integer getWidth() {
         return width;
     }
@@ -53,7 +50,8 @@ public class Canvas extends AuctionObject {
         this.width = width;
     }
 
-    @Column(name = "height", nullable = false)
+    @NotNull
+    @Size(min = 5, message = "height can't be less than 50mm")
     public Integer getHeight() {
         return height;
     }
@@ -62,7 +60,8 @@ public class Canvas extends AuctionObject {
         this.height = height;
     }
 
-    @Column(name = "description", columnDefinition = "TEXT")
+    @NotNull
+    @NotEmpty(message = "description is required")
     public String getDescription() {
         return description;
     }

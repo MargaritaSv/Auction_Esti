@@ -1,6 +1,6 @@
 package org.softuni.auction_esti.web.controllers;
 
-import org.softuni.auction_esti.annotations.NoCaptcha;
+//import org.softuni.auction_esti.annotations.NoCaptcha;
 import org.softuni.auction_esti.domain.models.binding.UserLoginBindingModel;
 import org.softuni.auction_esti.domain.models.binding.UserRegisterBindingModel;
 import org.softuni.auction_esti.domain.models.sevice.UserPasswordServiceModel;
@@ -9,6 +9,7 @@ import org.softuni.auction_esti.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,23 +32,24 @@ public class UserController extends BaseController {
     }
 
     @GetMapping("/login")
-    public ModelAndView login() {
+    public ModelAndView login(@ModelAttribute("user") UserLoginBindingModel userLoginBindingModel) {
         return this.view("login");
     }
 
-    @NoCaptcha
+   // @NoCaptcha
     @PostMapping("/login")
-    public ModelAndView loginConfirm(@Valid @ModelAttribute("user") UserLoginBindingModel userLoginBindingModel,
+    public ModelAndView loginConfirm(ModelAndView modelAndView, @Validated @ModelAttribute("user") UserLoginBindingModel userLoginBindingModel,
                                      BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("model", bindingResult);
-            redirectAttributes.addFlashAttribute("errors", bindingResult.getFieldErrors()
-                    .stream()
-                    .map(e -> e.getDefaultMessage())
-                    .collect(Collectors.toList()));
+            //   modelAndView.addObject("user",bindingResult);
+            // redirectAttributes.addFlashAttribute("user", bindingResult);
+//            redirectAttributes.addFlashAttribute("errors", bindingResult.getFieldErrors()
+//                    .stream()
+//                    .map(e -> e.getDefaultMessage())
+//                    .collect(Collectors.toList()));
 
-            return super.redirect("/user/login");
+            return super.view("login", userLoginBindingModel);
         }
 
         UserPasswordServiceModel userFromDB = this.userService.logUser(userLoginBindingModel.getNickname());
@@ -60,13 +62,17 @@ public class UserController extends BaseController {
     }
 
     @GetMapping("/register")
-    public ModelAndView register() {
-        return this.view("register");
+    public ModelAndView register(@ModelAttribute( "viewModel") UserRegisterBindingModel userRegisterBindingModel) {
+        return this.view("register",userRegisterBindingModel);
     }
 
     @PostMapping("/register")
-    @NoCaptcha
-    public ModelAndView registerConfirm(@ModelAttribute UserRegisterBindingModel userRegisterBindingModel) {
+    public ModelAndView registerConfirm(@Valid @ModelAttribute("viewModel") UserRegisterBindingModel userRegisterBindingModel,
+                                        BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return super.view("register", userRegisterBindingModel);
+        }
 
         if (userRegisterBindingModel.getPasswordConfirm().equals(userRegisterBindingModel.getPassword())) {
             this.userService.createUser(userRegisterBindingModel);
