@@ -21,6 +21,7 @@ public class WatchAddBindingModel extends AuctionObjectBindingModel {
     public WatchAddBindingModel() {
     }
 
+    @NotEmpty
     @NotNull(message = "Dial is required")
     @Enumerated(EnumType.STRING)
     public String getDial() {

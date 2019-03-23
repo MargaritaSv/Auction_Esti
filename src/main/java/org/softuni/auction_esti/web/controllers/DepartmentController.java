@@ -27,7 +27,7 @@ public class DepartmentController extends BaseController {
         this.modelMapper = modelMapper;
     }
 
-    @GetMapping("/canvas")
+    @GetMapping("/art")
     public ModelAndView canvas(Map<String, Local> map) {
         return super.view("canvas");
     }

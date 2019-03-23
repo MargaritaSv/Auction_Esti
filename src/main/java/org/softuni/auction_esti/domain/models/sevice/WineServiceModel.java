@@ -1,25 +1,31 @@
-package org.softuni.auction_esti.domain.models.binding;
+package org.softuni.auction_esti.domain.models.sevice;
 
 import org.softuni.auction_esti.domain.entities.User;
+import org.softuni.auction_esti.domain.entities.enums.WineCollections;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 
-public abstract class AuctionObjectBindingModel {
-
+public class WineServiceModel {
+    private Integer id;
     private String name;
     private BigDecimal estimateTo;
     private BigDecimal estimateFrom;
     private User estimatedBy;
     private String urlImage;
+    private WineCollections collection;
+    private Integer numberOfBottles;
 
-    public AuctionObjectBindingModel() {
+    public WineServiceModel() {
     }
 
-    @NotEmpty
-    @NotNull(message = "Name is required")
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -28,8 +34,6 @@ public abstract class AuctionObjectBindingModel {
         this.name = name;
     }
 
-//    @NotNull
-//    @Positive(message = "price must be positive number")
     public BigDecimal getEstimateTo() {
         return estimateTo;
     }
@@ -38,8 +42,6 @@ public abstract class AuctionObjectBindingModel {
         this.estimateTo = estimateTo;
     }
 
-    //@NotNull
-    //@Positive(message = "price must be positive number")
     public BigDecimal getEstimateFrom() {
         return estimateFrom;
     }
@@ -62,5 +64,21 @@ public abstract class AuctionObjectBindingModel {
 
     public void setUrlImage(String urlImage) {
         this.urlImage = urlImage;
+    }
+
+    public WineCollections getCollection() {
+        return collection;
+    }
+
+    public void setCollection(WineCollections collection) {
+        this.collection = collection;
+    }
+
+    public Integer getNumberOfBottles() {
+        return numberOfBottles;
+    }
+
+    public void setNumberOfBottles(Integer numberOfBottles) {
+        this.numberOfBottles = numberOfBottles;
     }
 }
