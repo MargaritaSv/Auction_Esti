@@ -1,11 +1,13 @@
 package org.softuni.auction_esti.web.controllers;
 
 import org.modelmapper.ModelMapper;
+import org.softuni.auction_esti.domain.models.binding.WatchShowBindingModel;
 import org.softuni.auction_esti.domain.models.view.WatchViewModel;
 import org.softuni.auction_esti.services.WatchService;
 import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -31,7 +33,8 @@ public class DepartmentController extends BaseController {
     }
 
     @GetMapping("/watches")
-    public ModelAndView watches(Map<String, Local> map) {
+    public ModelAndView watches(Map<String, Local> map,
+                                @ModelAttribute(name = "bindingModel") WatchShowBindingModel bindingModel) {
         List<WatchViewModel> watchViewModelList = this.watchService.findAll()
                 .stream()
                 .map(w -> this.modelMapper.map(w, WatchViewModel.class))

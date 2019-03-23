@@ -1,6 +1,8 @@
 package org.softuni.auction_esti.domain.models.view;
 
 import org.softuni.auction_esti.domain.entities.User;
+import org.softuni.auction_esti.domain.entities.enums.Closure;
+import org.softuni.auction_esti.domain.entities.enums.Dial;
 import org.softuni.auction_esti.domain.entities.enums.WatchCollection;
 
 import java.math.BigDecimal;
@@ -13,10 +15,10 @@ public class WatchViewModel {
     private BigDecimal estimateFrom;
     private User estimatedBy;
     private String urlImage;
-    private String dial;
+    private Dial dial;
     private String caliber;
     private String watchCase;
-    private String closure;
+    private Closure closure;
     private Integer dimensions;
     private WatchCollection collection;
 
@@ -71,11 +73,11 @@ public class WatchViewModel {
         this.urlImage = urlImage;
     }
 
-    public String getDial() {
+    public Dial getDial() {
         return dial;
     }
 
-    public void setDial(String dial) {
+    public void setDial(Dial dial) {
         this.dial = dial;
     }
 
@@ -95,11 +97,11 @@ public class WatchViewModel {
         this.watchCase = watchCase;
     }
 
-    public String getClosure() {
+    public Closure getClosure() {
         return closure;
     }
 
-    public void setClosure(String closure) {
+    public void setClosure(Closure closure) {
         this.closure = closure;
     }
 

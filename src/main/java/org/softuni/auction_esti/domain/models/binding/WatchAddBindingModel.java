@@ -2,12 +2,14 @@ package org.softuni.auction_esti.domain.models.binding;
 
 import org.softuni.auction_esti.domain.entities.enums.WatchCollection;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-
-public class WatchBindingModel extends AuctionObjectBindingModel {
+public class WatchAddBindingModel extends AuctionObjectBindingModel {
 
     private String dial;
     private String caliber;
@@ -16,8 +18,11 @@ public class WatchBindingModel extends AuctionObjectBindingModel {
     private Integer dimensions;
     private WatchCollection collection;
 
-    @NotNull
-    @NotEmpty(message = "Dial is required")
+    public WatchAddBindingModel() {
+    }
+
+    @NotNull(message = "Dial is required")
+    @Enumerated(EnumType.STRING)
     public String getDial() {
         return dial;
     }
@@ -26,8 +31,7 @@ public class WatchBindingModel extends AuctionObjectBindingModel {
         this.dial = dial;
     }
 
-    @NotNull
-    @NotEmpty(message = "Caliber is required")
+    @NotNull(message = "Caliber is required")
     public String getCaliber() {
         return caliber;
     }
@@ -36,8 +40,7 @@ public class WatchBindingModel extends AuctionObjectBindingModel {
         this.caliber = caliber;
     }
 
-    @NotNull
-    @NotEmpty(message = "Watch case is required")
+    @NotNull(message = "Watch case is required")
     public String getWatchCase() {
         return watchCase;
     }
@@ -48,6 +51,7 @@ public class WatchBindingModel extends AuctionObjectBindingModel {
 
     @NotNull
     @NotEmpty(message = "Closure is required")
+    @Enumerated(EnumType.STRING)
     public String getClosure() {
         return closure;
     }
@@ -56,8 +60,8 @@ public class WatchBindingModel extends AuctionObjectBindingModel {
         this.closure = closure;
     }
 
-    @NotNull
-    @Size(min = 10, max = 35)
+//    @NotNull
+//    @Min(value = 10, message = "Size must be at least 10sm")
     public Integer getDimensions() {
         return dimensions;
     }
@@ -66,6 +70,8 @@ public class WatchBindingModel extends AuctionObjectBindingModel {
         this.dimensions = dimensions;
     }
 
+    @NotNull(message = "Collection is required")
+    @Enumerated(EnumType.STRING)
     public WatchCollection getCollection() {
         return collection;
     }
@@ -73,4 +79,5 @@ public class WatchBindingModel extends AuctionObjectBindingModel {
     public void setCollection(WatchCollection collection) {
         this.collection = collection;
     }
+
 }

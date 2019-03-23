@@ -1,36 +1,33 @@
-package org.softuni.auction_esti.domain.entities;
+package org.softuni.auction_esti.domain.models.binding;
 
-import org.softuni.auction_esti.domain.entities.enums.Closure;
-import org.softuni.auction_esti.domain.entities.enums.Dial;
 import org.softuni.auction_esti.domain.entities.enums.WatchCollection;
 
-import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-@Entity
-@Table(name = "watches")
-public class Watch extends AuctionObject {
 
-    private Dial dial;
+public class WatchShowBindingModel extends AuctionObjectBindingModel {
+
+    private String dial;
     private String caliber;
     private String watchCase;
-    private Closure closure;
+    private String closure;
     private Integer dimensions;
     private WatchCollection collection;
 
-    public Watch() {
-    }
-
-    @Column(name = "dial")
-    @Enumerated(EnumType.STRING)
-    public Dial getDial() {
+    @NotNull
+    @NotEmpty(message = "Dial is required")
+    public String getDial() {
         return dial;
     }
 
-    public void setDial(Dial dial) {
+    public void setDial(String dial) {
         this.dial = dial;
     }
 
-    @Column(name = "caliber")
+    @NotNull
+    @NotEmpty(message = "Caliber is required")
     public String getCaliber() {
         return caliber;
     }
@@ -39,7 +36,8 @@ public class Watch extends AuctionObject {
         this.caliber = caliber;
     }
 
-    @Column(name = "watch_case")
+    @NotNull
+    @NotEmpty(message = "Watch case is required")
     public String getWatchCase() {
         return watchCase;
     }
@@ -48,17 +46,18 @@ public class Watch extends AuctionObject {
         this.watchCase = watchCase;
     }
 
-    @Column(name = "closure")
-    @Enumerated(EnumType.STRING)
-    public Closure getClosure() {
+    @NotNull
+    @NotEmpty(message = "Closure is required")
+    public String getClosure() {
         return closure;
     }
 
-    public void setClosure(Closure closure) {
+    public void setClosure(String closure) {
         this.closure = closure;
     }
 
-    @Column(name = "dimentions")
+    @NotNull
+    @Size(min = 10, max = 35)
     public Integer getDimensions() {
         return dimensions;
     }
@@ -67,8 +66,6 @@ public class Watch extends AuctionObject {
         this.dimensions = dimensions;
     }
 
-    @Column(name = "collection")
-    @Enumerated(EnumType.STRING)
     public WatchCollection getCollection() {
         return collection;
     }

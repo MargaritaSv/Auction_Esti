@@ -1,6 +1,7 @@
 package org.softuni.auction_esti.domain.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @MappedSuperclass
@@ -28,6 +29,7 @@ public abstract class AuctionObject {
     }
 
     @Column(name = "name")
+    @NotNull(message = "Name is required")
     public String getName() {
         return name;
     }
@@ -45,6 +47,7 @@ public abstract class AuctionObject {
         this.estimateTo = estimateTo;
     }
 
+    @NotNull(message = "Start price is required.")
     @Column(name = "estimate_from")
     public BigDecimal getEstimateFrom() {
         return estimateFrom;

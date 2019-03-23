@@ -1,6 +1,7 @@
 package org.softuni.auction_esti.services;
 
 import org.modelmapper.ModelMapper;
+import org.softuni.auction_esti.domain.entities.Watch;
 import org.softuni.auction_esti.domain.models.sevice.WatchServiceModel;
 import org.softuni.auction_esti.repository.WatchRepository;
 import org.springframework.stereotype.Service;
@@ -26,5 +27,18 @@ public class WatchServiceImpl implements WatchService {
                 .stream()
                 .map(watch -> this.modelMapper.map(watch, WatchServiceModel.class))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public WatchServiceModel add(WatchServiceModel watchServiceModel) {
+        Watch watch = this.modelMapper.map(watchServiceModel, Watch.class);
+
+        try {
+            watch = this.watchRepository.saveAndFlush(watch);
+            return this.modelMapper.map(watch, WatchServiceModel.class);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
     }
 }
