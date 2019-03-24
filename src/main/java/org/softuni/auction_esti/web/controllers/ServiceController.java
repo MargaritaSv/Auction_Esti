@@ -1,10 +1,7 @@
 package org.softuni.auction_esti.web.controllers;
 
 import org.modelmapper.ModelMapper;
-import org.softuni.auction_esti.domain.models.binding.ArtAddBindingModel;
-import org.softuni.auction_esti.domain.models.binding.WatchAddBindingModel;
-import org.softuni.auction_esti.domain.models.binding.WatchEditBindingModel;
-import org.softuni.auction_esti.domain.models.binding.WineAddBindingModel;
+import org.softuni.auction_esti.domain.models.binding.*;
 import org.softuni.auction_esti.domain.models.sevice.ArtServiceModel;
 import org.softuni.auction_esti.domain.models.sevice.WatchServiceModel;
 import org.softuni.auction_esti.domain.models.sevice.WineServiceModel;
@@ -58,7 +55,7 @@ public class ServiceController extends BaseController {
 
     @GetMapping("/watch")
     public ModelAndView watch(@ModelAttribute(name = "viewModel") WatchAddBindingModel bindingModel) {
-        return super.view("add_watch", bindingModel,"Add watch");
+        return super.view("add_watch", bindingModel, "Add watch");
     }
 
     @PostMapping("/watch")
@@ -85,7 +82,7 @@ public class ServiceController extends BaseController {
 
     @PostMapping("/watch/edit/{id}")
     public ModelAndView editWatchConfirm(@PathVariable("id") Integer id,
-                                  @ModelAttribute(name = "viewModel") WatchEditBindingModel watchEditBindingModel) {
+                                         @ModelAttribute(name = "viewModel") WatchEditBindingModel watchEditBindingModel) {
         //da go mapna za obejct from db-to
         return super.view("edit_watch", watchEditBindingModel);
     }
@@ -108,6 +105,23 @@ public class ServiceController extends BaseController {
             throw new IllegalArgumentException("Something went wrong!");
         }
         return super.redirect("/department/wines");
+    }
+
+    @GetMapping("/auction")
+    public ModelAndView auction(@ModelAttribute("viewoMdel") AuctionAddBindingModel bindingModel) {
+        return super.view("add_auction", bindingModel);
+    }
+
+    @PostMapping("/auction")
+    public ModelAndView auctionConfirm(@Valid @ModelAttribute("viewModel") AuctionAddBindingModel bindingModel,
+                                       BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return super.view("add_auction", bindingModel);
+        }
+
+        //TODO:save
+        return super.view("add_auction", bindingModel);
 
     }
 }
