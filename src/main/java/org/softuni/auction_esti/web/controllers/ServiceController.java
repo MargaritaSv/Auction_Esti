@@ -3,6 +3,7 @@ package org.softuni.auction_esti.web.controllers;
 import org.modelmapper.ModelMapper;
 import org.softuni.auction_esti.domain.models.binding.ArtAddBindingModel;
 import org.softuni.auction_esti.domain.models.binding.WatchAddBindingModel;
+import org.softuni.auction_esti.domain.models.binding.WatchEditBindingModel;
 import org.softuni.auction_esti.domain.models.binding.WineAddBindingModel;
 import org.softuni.auction_esti.domain.models.sevice.ArtServiceModel;
 import org.softuni.auction_esti.domain.models.sevice.WatchServiceModel;
@@ -12,10 +13,7 @@ import org.softuni.auction_esti.services.WatchService;
 import org.softuni.auction_esti.services.WineService;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -60,7 +58,7 @@ public class ServiceController extends BaseController {
 
     @GetMapping("/watch")
     public ModelAndView watch(@ModelAttribute(name = "viewModel") WatchAddBindingModel bindingModel) {
-        return super.view("add_watch", bindingModel);
+        return super.view("add_watch", bindingModel,"Add watch");
     }
 
     @PostMapping("/watch")
@@ -79,13 +77,26 @@ public class ServiceController extends BaseController {
         return this.redirect("/department/watches");
     }
 
+    @GetMapping("/watch/edit/{id}")
+    public ModelAndView editWatch(@PathVariable("id") Integer id,
+                                  @ModelAttribute(name = "viewModel") WatchEditBindingModel watchEditBindingModel) {
+        return super.view("edit_watch", watchEditBindingModel);
+    }
+
+    @PostMapping("/watch/edit/{id}")
+    public ModelAndView editWatchConfirm(@PathVariable("id") Integer id,
+                                  @ModelAttribute(name = "viewModel") WatchEditBindingModel watchEditBindingModel) {
+        //da go mapna za obejct from db-to
+        return super.view("edit_watch", watchEditBindingModel);
+    }
+
     @GetMapping("/wine")
     public ModelAndView wine(@ModelAttribute(name = "viewModel") WineAddBindingModel bindingModel) {
         return super.view("add_wine", bindingModel);
     }
 
     @PostMapping("/wine")
-    public ModelAndView confirmWine(@Valid @ModelAttribute(name = "viewModel") WineAddBindingModel bindingModel,
+    public ModelAndView wineConfirm(@Valid @ModelAttribute(name = "viewModel") WineAddBindingModel bindingModel,
                                     BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
@@ -96,7 +107,7 @@ public class ServiceController extends BaseController {
         if (wineServiceModel == null) {
             throw new IllegalArgumentException("Something went wrong!");
         }
-        return super.redirect("/department/wine");
+        return super.redirect("/department/wines");
 
     }
 }

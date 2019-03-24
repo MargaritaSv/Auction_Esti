@@ -2,6 +2,8 @@ package org.softuni.auction_esti.domain.models.binding;
 
 import org.softuni.auction_esti.domain.entities.enums.WineCollections;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -16,7 +18,8 @@ public class WineAddBindingModel extends AuctionObjectBindingModel {
     }
 
     @NotNull
-    @NotEmpty(message = "Collection is required")
+  //  @NotEmpty(message = "Collection is required")
+    @Enumerated(EnumType.STRING)
     public WineCollections getCollection() {
         return collection;
     }

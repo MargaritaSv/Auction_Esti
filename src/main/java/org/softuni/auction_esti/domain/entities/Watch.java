@@ -5,6 +5,7 @@ import org.softuni.auction_esti.domain.entities.enums.Dial;
 import org.softuni.auction_esti.domain.entities.enums.WatchCollection;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 
 @Entity
 @Table(name = "watches")
@@ -20,7 +21,7 @@ public class Watch extends AuctionObject {
     public Watch() {
     }
 
-    @Column(name = "dial")
+    @Column(name = "dial", nullable = false)
     @Enumerated(EnumType.STRING)
     public Dial getDial() {
         return dial;
@@ -48,7 +49,7 @@ public class Watch extends AuctionObject {
         this.watchCase = watchCase;
     }
 
-    @Column(name = "closure")
+    @Column(name = "closure", nullable = false)
     @Enumerated(EnumType.STRING)
     public Closure getClosure() {
         return closure;
@@ -58,7 +59,8 @@ public class Watch extends AuctionObject {
         this.closure = closure;
     }
 
-    @Column(name = "dimentions")
+    @Column(name = "dimentions", nullable = false)
+    @Min(10)
     public Integer getDimensions() {
         return dimensions;
     }

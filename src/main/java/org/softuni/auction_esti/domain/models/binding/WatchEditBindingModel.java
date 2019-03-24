@@ -4,13 +4,10 @@ import org.softuni.auction_esti.domain.entities.enums.WatchCollection;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
-public class WatchAddBindingModel extends AuctionObjectBindingModel {
-
+public class WatchEditBindingModel extends AuctionObjectBindingModel {
     private String dial;
     private String caliber;
     private String watchCase;
@@ -18,7 +15,7 @@ public class WatchAddBindingModel extends AuctionObjectBindingModel {
     private Integer dimensions;
     private WatchCollection collection;
 
-    public WatchAddBindingModel() {
+    public WatchEditBindingModel() {
     }
 
     @NotEmpty
@@ -41,7 +38,7 @@ public class WatchAddBindingModel extends AuctionObjectBindingModel {
         this.caliber = caliber;
     }
 
-   // @NotNull(message = "Watch case is required")
+    @NotNull(message = "Watch case is required")
     public String getWatchCase() {
         return watchCase;
     }
@@ -61,8 +58,8 @@ public class WatchAddBindingModel extends AuctionObjectBindingModel {
         this.closure = closure;
     }
 
-//    @NotNull
-    @Min(value = 10, message = "Size must be at least 10sm")
+    //    @NotNull
+//    @Min(value = 10, message = "Size must be at least 10sm")
     public Integer getDimensions() {
         return dimensions;
     }
@@ -80,5 +77,4 @@ public class WatchAddBindingModel extends AuctionObjectBindingModel {
     public void setCollection(WatchCollection collection) {
         this.collection = collection;
     }
-
 }

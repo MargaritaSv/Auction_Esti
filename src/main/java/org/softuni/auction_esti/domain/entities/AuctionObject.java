@@ -28,8 +28,8 @@ public abstract class AuctionObject {
         this.id = id;
     }
 
-    @Column(name = "name")
-    @NotNull(message = "Name is required")
+    @Column(name = "name", nullable = false)
+    // @NotNull(message = "Name is required")
     public String getName() {
         return name;
     }
@@ -47,8 +47,8 @@ public abstract class AuctionObject {
         this.estimateTo = estimateTo;
     }
 
-    @NotNull(message = "Start price is required.")
-    @Column(name = "estimate_from")
+    // @NotNull(message = "Start price is required.")
+    @Column(name = "estimate_from", nullable = false)
     public BigDecimal getEstimateFrom() {
         return estimateFrom;
     }
@@ -56,6 +56,7 @@ public abstract class AuctionObject {
     public void setEstimateFrom(BigDecimal estimateFrom) {
         this.estimateFrom = estimateFrom;
     }
+
 
     @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "estimate_by", referencedColumnName = "id")

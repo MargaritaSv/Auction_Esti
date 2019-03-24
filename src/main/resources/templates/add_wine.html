@@ -13,7 +13,7 @@
         </div>
         <div class=" form-group" th:classappend="${#fields.hasErrors('numberOfBottles')}? 'text-danger'">
             <label for="numberOfBottles" class="col-sm-2 col-form-label">Number of bottles</label>
-            <input type="number" class="form-control" id="numberOfBottles" th:fields="*{numberOfBottles}">
+            <input type="number" class="form-control" id="numberOfBottles" th:fields="*{numberOfBottles}" name="numberOfBottles">
             <small th:each="error : ${#fields.errors('numberOfBottles')}" th:text="${error}"></small>
         </div>
 

@@ -1,34 +1,21 @@
-package org.softuni.auction_esti.domain.entities;
+package org.softuni.auction_esti.domain.models.binding;
 
+import org.softuni.auction_esti.util.validators.annotations.DateValidation;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "auction")
-public class Auction {
+public class AuctionAddBindingModel {
 
-    private Integer id;
     private String name;
     private String place;
     private LocalDate date;
 
-    public Auction() {
+    public AuctionAddBindingModel() {
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true, updatable = false)
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    @Column(name = "name")
+    @NotEmpty(message = "Name is required.")
     public String getName() {
         return name;
     }
@@ -37,7 +24,7 @@ public class Auction {
         this.name = name;
     }
 
-    @Column(name = "place")
+    @NotEmpty(message = "Place is required.")
     public String getPlace() {
         return place;
     }
@@ -46,7 +33,7 @@ public class Auction {
         this.place = place;
     }
 
-    @Column(name = "date", columnDefinition = "DATETIME")
+    @DateValidation
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     public LocalDate getDate() {
         return date;

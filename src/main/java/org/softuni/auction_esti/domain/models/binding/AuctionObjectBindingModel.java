@@ -28,8 +28,8 @@ public abstract class AuctionObjectBindingModel {
         this.name = name;
     }
 
-//    @NotNull
-//    @Positive(message = "price must be positive number")
+    @NotNull
+    @Positive(message = "price must be positive number")
     public BigDecimal getEstimateTo() {
         return estimateTo;
     }
@@ -38,8 +38,8 @@ public abstract class AuctionObjectBindingModel {
         this.estimateTo = estimateTo;
     }
 
-    //@NotNull
-    //@Positive(message = "price must be positive number")
+    @NotNull
+    @Positive(message = "price must be positive number")
     public BigDecimal getEstimateFrom() {
         return estimateFrom;
     }

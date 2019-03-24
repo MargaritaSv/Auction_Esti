@@ -41,4 +41,10 @@ public class WatchServiceImpl implements WatchService {
             return null;
         }
     }
+
+    @Override
+    public WatchServiceModel findById(Integer id) {
+       // return this.watchRepository.findById(id);
+        return null;
+    }
 }

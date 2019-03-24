@@ -9,4 +9,6 @@ public interface WatchService {
 
     WatchServiceModel add(WatchServiceModel watchServiceModel);
 
+    WatchServiceModel findById(Integer id);
+
 }
