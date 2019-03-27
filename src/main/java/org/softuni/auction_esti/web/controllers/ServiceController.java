@@ -54,16 +54,28 @@ public class ServiceController extends BaseController {
     }
 
     @GetMapping("/watch")
-    public ModelAndView watch(@ModelAttribute(name = "viewModel") WatchAddBindingModel bindingModel) {
-        return super.view("add_watch", bindingModel, "Add watch");
+    public ModelAndView watch(@ModelAttribute(name = "viewModel") WatchAddBindingModel bindingModel,
+                              ModelAndView modelAndView) {
+        modelAndView.addObject(bindingModel);
+        modelAndView.addObject("title", null);
+        modelAndView.addObject("viewName", "add_watch");
+        modelAndView.setViewName("fragments/layout");
+        return modelAndView;
+        // return super.view("add_watch", bindingModel, "Add watch");
     }
 
     @PostMapping("/watch")
     public ModelAndView watchConfirm(@Valid @ModelAttribute(name = "viewModel") WatchAddBindingModel bindingModel,
-                                     BindingResult bindingResult) {
+                                     BindingResult bindingResult, ModelAndView modelAndView) {
 
         //TODO: doesnt't catch errors
         if (bindingResult.hasErrors()) {
+//            modelAndView.addObject("viewName", "add_watch");
+//            modelAndView.addObject("title", "Add watch");
+//            modelAndView.addObject("viewModel", bindingModel);
+//            modelAndView.setViewName("fragments/layout");
+//
+//            return modelAndView;
             return super.view("add_watch", bindingModel);
         }
 
@@ -94,10 +106,12 @@ public class ServiceController extends BaseController {
 
     @PostMapping("/wine")
     public ModelAndView wineConfirm(@Valid @ModelAttribute(name = "viewModel") WineAddBindingModel bindingModel,
-                                    BindingResult bindingResult) {
+                                    BindingResult bindingResult, ModelAndView modelAndView) {
 
         if (bindingResult.hasErrors()) {
-            return super.view("add_wine", bindingModel);
+            //  return super.view("add_wine", bindingModel);
+            modelAndView.addObject("viewModel", bindingModel);
+            return super.viewWithModel("add_wine","add wine", modelAndView);
         }
 
         WineServiceModel wineServiceModel = this.wineService.add(this.modelMapper.map(bindingModel, WineServiceModel.class));
@@ -105,6 +119,20 @@ public class ServiceController extends BaseController {
             throw new IllegalArgumentException("Something went wrong!");
         }
         return super.redirect("/department/wines");
+    }
+
+    @GetMapping("/wine/edit/{id}")
+    public ModelAndView editWine(@PathVariable("id") Integer id,
+                                 @ModelAttribute(name = "viewModel") WineAddBindingModel bindingModel) {
+        return super.view("edit_watch", bindingModel);
+    }
+
+    @PostMapping("/wine/edit/{id}")
+    public ModelAndView editWineConfirm(@PathVariable("id") Integer id,
+                                        @ModelAttribute(name = "viewModel") WineAddBindingModel bindingModel,ModelAndView modelAndView) {
+        //da go mapna za obejct from db-to
+        modelAndView.addObject(bindingModel);
+        return super.viewWithModel("edit_watch","watch" ,modelAndView);
     }
 
     @GetMapping("/auction")

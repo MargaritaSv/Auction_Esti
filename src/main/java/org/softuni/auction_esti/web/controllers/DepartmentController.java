@@ -2,8 +2,11 @@ package org.softuni.auction_esti.web.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.softuni.auction_esti.domain.models.binding.WatchShowBindingModel;
+import org.softuni.auction_esti.domain.models.binding.WineShowBindingModel;
 import org.softuni.auction_esti.domain.models.view.WatchViewModel;
+import org.softuni.auction_esti.domain.models.view.WineViewModel;
 import org.softuni.auction_esti.services.WatchService;
+import org.softuni.auction_esti.services.WineService;
 import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,10 +23,12 @@ import java.util.stream.Collectors;
 public class DepartmentController extends BaseController {
 
     private final WatchService watchService;
+    private final WineService wineService;
     private final ModelMapper modelMapper;
 
-    public DepartmentController(WatchService watchService, ModelMapper modelMapper) {
+    public DepartmentController(WatchService watchService, WineService wineService, ModelMapper modelMapper) {
         this.watchService = watchService;
+        this.wineService = wineService;
         this.modelMapper = modelMapper;
     }
 
@@ -47,7 +52,12 @@ public class DepartmentController extends BaseController {
 
 
     @GetMapping("/wines")
-    public ModelAndView wines(Map<String, Local> map) {
-        return super.view("wines");
+    public ModelAndView wines(Map<String, Local> map, @ModelAttribute(name = "bindingModel") WineShowBindingModel bindingModel) {
+        List<WineViewModel> wineViewModelList = this.wineService.findAll()
+                .stream()
+                .map(wine -> this.modelMapper.map(wine, WineViewModel.class))
+                .collect(Collectors.toList());
+
+        return super.view("wines", wineViewModelList, "wines");
     }
 }

@@ -14,6 +14,15 @@ public class BaseController {
         return modelAndView;
     }
 
+    protected ModelAndView viewWithModel(String view,String title, ModelAndView modelAndView) {
+        modelAndView.setViewName("fragments/layout");
+        modelAndView.addObject("viewName", view);
+          modelAndView.addObject("title", title);
+       // modelAndView.addObject("viewModel", modelAndView);
+        return modelAndView;
+        // return this.view(view, viewModel);
+    }
+
     protected ModelAndView view(String view, Object viewModel) {
         return this.view(view, viewModel, null);
     }

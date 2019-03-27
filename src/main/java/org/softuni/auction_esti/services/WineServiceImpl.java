@@ -2,9 +2,13 @@ package org.softuni.auction_esti.services;
 
 import org.modelmapper.ModelMapper;
 import org.softuni.auction_esti.domain.entities.Wine;
+import org.softuni.auction_esti.domain.models.sevice.WatchServiceModel;
 import org.softuni.auction_esti.domain.models.sevice.WineServiceModel;
 import org.softuni.auction_esti.repository.WineRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class WineServiceImpl implements WineService {
@@ -28,5 +32,13 @@ public class WineServiceImpl implements WineService {
             ex.printStackTrace();
             return null;
         }
+    }
+
+    @Override
+    public List<WineServiceModel> findAll() {
+        return this.wineRepository.findAll()
+                .stream()
+                .map(wine -> this.modelMapper.map(wine, WineServiceModel.class))
+                .collect(Collectors.toList());
     }
 }
