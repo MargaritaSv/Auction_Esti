@@ -1,3 +1,8 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      layout:decorator="layout">
 <th:block th:fragment="navbar">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Navbar</a>
@@ -77,14 +82,14 @@
                         <a class="dropdown-item" th:href="@{?lang=bg}">Bulgaria</a>
                     </div>
                 </li>
-                <li class="nav-item">
+                <li sec:authorize="isAnonymous()" class="nav-item">
                     <a class="nav-link" th:href="@{/userDetails/login}" data-th-text="#{navbar_log_in.lang}"></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/userDetails/logout}" data-th-text="#{navbar_log_out.lang}"></a>
-                </li>
-                <li class="nav-item">
+                </li> |
+                <li  sec:authorize="isAnonymous()" class="nav-item">
                     <a class="nav-link" th:href="@{/userDetails/register}" data-th-text="#{navbar_register.lang}"></a>
+                </li>
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <a class="nav-link" th:href="@{/userDetails/logout}" data-th-text="#{navbar_log_out.lang}"></a>
                 </li>
             </ul>
             <!--<form class="form-inline my-2 my-lg-0">-->

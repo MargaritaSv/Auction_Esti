@@ -1,12 +1,14 @@
 package org.softuni.auction_esti.web.controllers;
 
 //import org.softuni.auction_esti.annotations.NoCaptcha;
+
 import org.softuni.auction_esti.domain.models.binding.UserLoginBindingModel;
 import org.softuni.auction_esti.domain.models.binding.UserRegisterBindingModel;
 import org.softuni.auction_esti.domain.models.sevice.UserPasswordServiceModel;
 import org.softuni.auction_esti.domain.models.sevice.UserServiceModel;
 import org.softuni.auction_esti.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -18,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Controller
@@ -32,13 +35,13 @@ public class UserController extends BaseController {
     }
 
     @GetMapping("/login")
-    public ModelAndView login(@ModelAttribute("user") UserLoginBindingModel userLoginBindingModel) {
+    public ModelAndView login(Map<String, Local> map, @ModelAttribute("user") UserLoginBindingModel userLoginBindingModel) {
         return this.view("login");
     }
 
-   // @NoCaptcha
+    // @NoCaptcha
     @PostMapping("/login")
-    public ModelAndView loginConfirm(ModelAndView modelAndView, @Validated @ModelAttribute("user") UserLoginBindingModel userLoginBindingModel,
+    public ModelAndView loginConfirm(Map<String, Local> map, ModelAndView modelAndView, @Validated @ModelAttribute("user") UserLoginBindingModel userLoginBindingModel,
                                      BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
@@ -62,12 +65,12 @@ public class UserController extends BaseController {
     }
 
     @GetMapping("/register")
-    public ModelAndView register(@ModelAttribute( "viewModel") UserRegisterBindingModel userRegisterBindingModel) {
-        return this.view("register",userRegisterBindingModel);
+    public ModelAndView register(Map<String, Local> map, @ModelAttribute("viewModel") UserRegisterBindingModel userRegisterBindingModel) {
+        return this.view("register", userRegisterBindingModel);
     }
 
     @PostMapping("/register")
-    public ModelAndView registerConfirm(@Valid @ModelAttribute("viewModel") UserRegisterBindingModel userRegisterBindingModel,
+    public ModelAndView registerConfirm(Map<String, Local> map, @Valid @ModelAttribute("viewModel") UserRegisterBindingModel userRegisterBindingModel,
                                         BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
@@ -81,8 +84,10 @@ public class UserController extends BaseController {
 
         return this.redirect("/");
     }
-//
-//    @GetMapping("/logout")
-//    public ModelAndView login() {
-    // }
+
+    //
+    @GetMapping("/logout")
+    public ModelAndView login() {
+        return super.redirect("/");
+    }
 }

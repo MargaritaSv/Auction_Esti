@@ -1,4 +1,4 @@
-package org.softuni.auction_esti.services;
+package org.softuni.auction_esti.security;
 
 import org.softuni.auction_esti.domain.entities.UserPassword;
 import org.softuni.auction_esti.repository.UserPasswordRepository;
