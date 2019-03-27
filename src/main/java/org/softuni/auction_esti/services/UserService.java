@@ -6,7 +6,7 @@ import org.softuni.auction_esti.domain.models.sevice.UserPasswordServiceModel;
 import org.softuni.auction_esti.domain.models.sevice.UserServiceModel;
 
 public interface UserService {
-    boolean createUser(UserRegisterBindingModel bindingModel);
-
-    UserPasswordServiceModel logUser(String nickname);
+//    boolean createUser(UserRegisterBindingModel bindingModel);
+//
+//    UserPasswordServiceModel logUser(String nickname);
 }

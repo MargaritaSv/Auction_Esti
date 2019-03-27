@@ -1,6 +1,5 @@
 package org.softuni.auction_esti.domain.models.view;
 
-import org.softuni.auction_esti.domain.entities.User;
 import org.softuni.auction_esti.domain.entities.enums.WineCollections;
 
 import java.math.BigDecimal;
@@ -11,7 +10,7 @@ public class WineViewModel {
     private String name;
     private BigDecimal estimateTo;
     private BigDecimal estimateFrom;
-    //  private User estimatedBy;
+    //  private UserDetails estimatedBy;
     private String urlImage;
     private WineCollections collection;
     private Integer numberOfBottles;

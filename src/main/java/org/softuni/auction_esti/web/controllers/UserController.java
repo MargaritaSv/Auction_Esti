@@ -52,11 +52,11 @@ public class UserController extends BaseController {
             return super.view("login", userLoginBindingModel);
         }
 
-        UserPasswordServiceModel userFromDB = this.userService.logUser(userLoginBindingModel.getNickname());
-
-        if (userFromDB == null || !userFromDB.getPassword().equals(userLoginBindingModel.getPassword())) {
-            return this.view("/user/login");
-        }
+//        UserPasswordServiceModel userFromDB = this.userService.logUser(userLoginBindingModel.getNickname());
+//
+//        if (userFromDB == null || !userFromDB.getPassword().equals(userLoginBindingModel.getPassword())) {
+//            return this.view("/user/login");
+//        }
 
         return this.redirect("/");
     }
@@ -74,10 +74,10 @@ public class UserController extends BaseController {
             return super.view("register", userRegisterBindingModel);
         }
 
-        if (userRegisterBindingModel.getPasswordConfirm().equals(userRegisterBindingModel.getPassword())) {
-            this.userService.createUser(userRegisterBindingModel);
-            return this.redirect("/user/login");
-        }
+//        if (userRegisterBindingModel.getPasswordConfirm().equals(userRegisterBindingModel.getPassword())) {
+//            this.userService.createUser(userRegisterBindingModel);
+//            return this.redirect("/user/login");
+//        }
 
         return this.redirect("/");
     }

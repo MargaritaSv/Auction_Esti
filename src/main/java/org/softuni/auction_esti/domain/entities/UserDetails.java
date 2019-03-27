@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class UserDetails {
 
     private Integer id;
     private String firstName;
@@ -13,10 +13,10 @@ public class User {
     private String primaryAddress;
     private String secondAddress;
     // private String Education;
-    private String email;
+   // private String email;
     private String cardNumber;
 
-    public User() {
+    public UserDetails() {
     }
 
     @Id
@@ -84,14 +84,14 @@ public class User {
 //        Education = education;
 //    }
 
-    @Column(name = "email")
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+//    @Column(name = "email")
+//    public String getEmail() {
+//        return email;
+//    }
+//
+//    public void setEmail(String email) {
+//        this.email = email;
+//    }
 
     @Column(name = "card_number")
     public String getCardNumber() {

@@ -1,6 +1,6 @@
 package org.softuni.auction_esti.domain.models.sevice;
 
-import org.softuni.auction_esti.domain.entities.User;
+import org.softuni.auction_esti.domain.entities.UserDetails;
 import org.softuni.auction_esti.domain.entities.enums.WatchCollection;
 
 import java.math.BigDecimal;
@@ -11,7 +11,7 @@ public class WatchServiceModel {
     private String name;
     private BigDecimal estimateTo;
     private BigDecimal estimateFrom;
-    private User estimatedBy;
+    private UserDetails estimatedBy;
     private String urlImage;
     private String dial;
     private String caliber;
@@ -55,11 +55,11 @@ public class WatchServiceModel {
         this.estimateFrom = estimateFrom;
     }
 
-    public User getEstimatedBy() {
+    public UserDetails getEstimatedBy() {
         return estimatedBy;
     }
 
-    public void setEstimatedBy(User estimatedBy) {
+    public void setEstimatedBy(UserDetails estimatedBy) {
         this.estimatedBy = estimatedBy;
     }
 

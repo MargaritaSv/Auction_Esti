@@ -1,7 +1,6 @@
 package org.softuni.auction_esti.domain.entities;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @MappedSuperclass
@@ -11,7 +10,7 @@ public abstract class AuctionObject {
     private String name;
     private BigDecimal estimateTo;
     private BigDecimal estimateFrom;
-    private User estimatedBy;
+    private UserDetails estimatedBy;
     private String urlImage;
 
     public AuctionObject() {
@@ -58,13 +57,13 @@ public abstract class AuctionObject {
     }
 
 
-    @ManyToOne(targetEntity = User.class)
+    @ManyToOne(targetEntity = UserDetails.class)
     @JoinColumn(name = "estimate_by", referencedColumnName = "id")
-    public User getEstimatedBy() {
+    public UserDetails getEstimatedBy() {
         return estimatedBy;
     }
 
-    public void setEstimatedBy(User estimatedBy) {
+    public void setEstimatedBy(UserDetails estimatedBy) {
         this.estimatedBy = estimatedBy;
     }
 

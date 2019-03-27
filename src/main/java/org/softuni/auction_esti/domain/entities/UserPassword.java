@@ -1,14 +1,18 @@
 package org.softuni.auction_esti.domain.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity(name = "user_password")
 public class UserPassword {
 
     private Integer id;
-    private User userId;
-    private String nickname;
+    private UserDetails userDetailsId;
+    private String email;
+    private String username;
     private String password;
+    private List<Role> roles;
 
     public UserPassword() {
     }
@@ -27,21 +31,32 @@ public class UserPassword {
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    public User getUserId() {
-        return userId;
+    public UserDetails getUserId() {
+        return userDetailsId;
     }
 
-    public void setUserId(User userId) {
-        this.userId = userId;
+    public void setUserId(UserDetails userDetailsId) {
+        this.userDetailsId = userDetailsId;
     }
 
-    @Column(name = "nickname", nullable = false, unique = true, updatable = false)
-    public String getNickname() {
-        return nickname;
+//    @Column(name = "nickname", nullable = false, unique = true, updatable = false)
+//    public String getNickname() {
+//        return nickname;
+//    }
+//
+//    public void setNickname(String nickname) {
+//        this.nickname = nickname;
+//    }
+
+
+    @NotNull
+    @Column(name = "username")
+    public String getUsername() {
+        return username;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Column(name = "password")
@@ -51,5 +66,27 @@ public class UserPassword {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @ManyToMany(cascade = CascadeType.MERGE)
+    @JoinTable(
+            name = "user_role",
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")}
+    )
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }

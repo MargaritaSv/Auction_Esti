@@ -1,11 +1,11 @@
 package org.softuni.auction_esti.domain.models.sevice;
 
-import org.softuni.auction_esti.domain.entities.User;
+import org.softuni.auction_esti.domain.entities.UserDetails;
 
 public class UserPasswordServiceModel {
 
     private Integer id;
-    private User userId;
+    private UserDetails userDetailsId;
     private String nickname;
     private String password;
 
@@ -20,12 +20,12 @@ public class UserPasswordServiceModel {
         this.id = id;
     }
 
-    public User getUserId() {
-        return userId;
+    public UserDetails getUserId() {
+        return userDetailsId;
     }
 
-    public void setUserId(User userId) {
-        this.userId = userId;
+    public void setUserId(UserDetails userDetailsId) {
+        this.userDetailsId = userDetailsId;
     }
 
     public String getNickname() {

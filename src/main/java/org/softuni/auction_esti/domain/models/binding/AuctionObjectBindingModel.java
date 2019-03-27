@@ -1,6 +1,6 @@
 package org.softuni.auction_esti.domain.models.binding;
 
-import org.softuni.auction_esti.domain.entities.User;
+import org.softuni.auction_esti.domain.entities.UserDetails;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -12,7 +12,7 @@ public abstract class AuctionObjectBindingModel {
     private String name;
     private BigDecimal estimateTo;
     private BigDecimal estimateFrom;
-    private User estimatedBy;
+    private UserDetails estimatedBy;
     private String urlImage;
 
     public AuctionObjectBindingModel() {
@@ -48,11 +48,11 @@ public abstract class AuctionObjectBindingModel {
         this.estimateFrom = estimateFrom;
     }
 
-    public User getEstimatedBy() {
+    public UserDetails getEstimatedBy() {
         return estimatedBy;
     }
 
-    public void setEstimatedBy(User estimatedBy) {
+    public void setEstimatedBy(UserDetails estimatedBy) {
         this.estimatedBy = estimatedBy;
     }
 
