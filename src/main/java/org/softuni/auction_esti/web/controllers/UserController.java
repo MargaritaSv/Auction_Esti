@@ -36,7 +36,7 @@ public class UserController extends BaseController {
 
     @GetMapping("/login")
     public ModelAndView login(Map<String, Local> map, @ModelAttribute("user") UserLoginBindingModel userLoginBindingModel) {
-        return super.view("login",userLoginBindingModel);
+        return super.view("login", userLoginBindingModel);
     }
 
     // @NoCaptcha
@@ -70,19 +70,19 @@ public class UserController extends BaseController {
     }
 
     @PostMapping("/register")
-    public ModelAndView registerConfirm(Map<String, Local> map, @Valid @ModelAttribute("viewModel") UserRegisterBindingModel userRegisterBindingModel,
+    public ModelAndView registerConfirm(Map<String, Local> map, @Valid @ModelAttribute("viewModel") UserRegisterBindingModel bindingModel,
                                         BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-            return super.view("register", userRegisterBindingModel);
+            return super.view("register", bindingModel);
         }
 
-//        if (userRegisterBindingModel.getPasswordConfirm().equals(userRegisterBindingModel.getPassword())) {
-//            this.userService.createUser(userRegisterBindingModel);
-//            return this.redirect("/user/login");
-//        }
+        if (bindingModel.getPasswordConfirm().equals(bindingModel.getPassword())) {
+            this.userService.createUser(bindingModel);
+            return this.redirect("/user/login");
+        }
 
-        return this.redirect("/");
+        return this.redirect("/login");
     }
 
     //

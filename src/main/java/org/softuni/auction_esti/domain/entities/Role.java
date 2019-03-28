@@ -7,9 +7,14 @@ import java.util.List;
 @Entity
 @Table(name = "roles")
 public class Role {
+    public static final Integer ROLE_ADMIN = 1;
+    public static final Integer ROLE_MODERATOR = 2;
+    public static final Integer ROLE_USER = 3;
+
+
     private Integer id;
     private String name;
-    private List<UserPassword> userPasswords;
+    private List<User> users;
 
     public Role() {
     }
@@ -36,11 +41,11 @@ public class Role {
     }
 
     @ManyToMany(mappedBy = "roles")
-    public List<UserPassword> getUserPasswords() {
-        return userPasswords;
+    public List<User> getUsers() {
+        return users;
     }
 
-    public void setUserPasswords(List<UserPassword> userPasswords) {
-        this.userPasswords = userPasswords;
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 }

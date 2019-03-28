@@ -64,6 +64,8 @@ public class UserRegisterBindingModel {
         this.secondAddress = secondAddress;
     }
 
+    @NotNull
+    @NotEmpty(message = "email is required")
     public String getEmail() {
         return email;
     }
@@ -83,7 +85,7 @@ public class UserRegisterBindingModel {
     }
 
     @NotNull
-    @NotEmpty(message = "password confirm is required")
+    @NotEmpty(message = "confirm your password")
     public String getPasswordConfirm() {
         return passwordConfirm;
     }

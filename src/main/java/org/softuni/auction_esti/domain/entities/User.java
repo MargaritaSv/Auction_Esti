@@ -1,20 +1,24 @@
 package org.softuni.auction_esti.domain.entities;
 
+import org.hibernate.annotations.Fetch;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Set;
 
-@Entity(name = "user_password")
-public class UserPassword {
+@Entity(name = "users")
+public class User {
 
     private Integer id;
     private UserDetails userDetailsId;
     private String email;
-    private String username;
+    // private String username;
     private String password;
-    private List<Role> roles;
+    private Set<Role> roles;
 
-    public UserPassword() {
+    public User() {
     }
 
     @Id
@@ -28,7 +32,6 @@ public class UserPassword {
         this.id = id;
     }
 
-
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     public UserDetails getUserId() {
@@ -39,25 +42,17 @@ public class UserPassword {
         this.userDetailsId = userDetailsId;
     }
 
-//    @Column(name = "nickname", nullable = false, unique = true, updatable = false)
-//    public String getNickname() {
-//        return nickname;
+
+//    @NotNull
+//    @NotEmpty(message = "user is required")
+//    @Column(name = "username")
+//    public String getUsername() {
+//        return username;
 //    }
 //
-//    public void setNickname(String nickname) {
-//        this.nickname = nickname;
+//    public void setUsername(String username) {
+//        this.username = username;
 //    }
-
-
-    @NotNull
-    @Column(name = "username")
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     @Column(name = "password")
     public String getPassword() {
@@ -76,17 +71,17 @@ public class UserPassword {
         this.email = email;
     }
 
-    @ManyToMany(cascade = CascadeType.MERGE)
+    @ManyToMany(targetEntity = Role.class, fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_role",
-            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")}
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id")}
     )
-    public List<Role> getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<Role> roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 }

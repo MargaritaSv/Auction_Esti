@@ -9,6 +9,16 @@
 
             <form id="login100-form validate-form" class="w-50 mx-auto" th:method="post"
                   th:action="@{/user/register}" th:object="${viewModel}">
+
+                <!--<div class="wrap-input100 validate-input m-b-26"-->
+                     <!--th:classappend="${#fields.hasErrors('username')}? 'text-danger'">-->
+                    <!--<span class="label-input100" for="firstName">First Name</span>-->
+                    <!--<input class="input100"-->
+                           <!--type="text" th:field="*{username}" id="username"-->
+                           <!--placeholder="Username"-->
+                           <!--name="username">-->
+                    <!--&lt;!&ndash;<small th:each="error : ${#fields.errors('username')}" th:text="${error}"></small>&ndash;&gt;-->
+                <!--</div>-->
                 <div class="wrap-input100 validate-input m-b-26"
                      th:classappend="${#fields.hasErrors('firstName')}? 'text-danger'">
                     <span class="label-input100" for="firstName">First Name</span>
@@ -57,14 +67,6 @@
                            type="email" id="email" placeholder="Email..." name="email">
 
                 </div>
-                <!--<div class="wrap-input100 validate-input m-b-26" th:classappend="${#fields.hasErrors('nickname')}? 'text-danger'">-->
-                <!--<label for="nickname">Nickname</label>-->
-                <!--<input class="input100"
-                     type="text"  th:field="*{nickname}" id="nickname" placeholder="Nickname..."-->
-                <!--name="nickname">-->
-                <!--&lt;!&ndash;<small th:each="error : ${#fields.errors('nickname')}" th:text="${error}"></small>&ndash;&gt;-->
-
-                <!--</div>-->
                 <div class="wrap-input100 validate-input m-b-26"
                      th:classappend="${#fields.hasErrors('password')}? 'text-danger'">
                     <span class="label-input100" for="password">Password</span>

@@ -3,7 +3,7 @@ package org.softuni.auction_esti.domain.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users_details")
 public class UserDetails {
 
     private Integer id;
@@ -12,8 +12,7 @@ public class UserDetails {
     private String lastName;
     private String primaryAddress;
     private String secondAddress;
-    // private String Education;
-   // private String email;
+  //  private String email;
     private String cardNumber;
 
     public UserDetails() {
@@ -74,15 +73,6 @@ public class UserDetails {
     public void setSecondAddress(String secondAddress) {
         this.secondAddress = secondAddress;
     }
-
-//    @Column(name = "education")
-//    public String getEducation() {
-//        return Education;
-//    }
-//
-//    public void setEducation(String education) {
-//        Education = education;
-//    }
 
 //    @Column(name = "email")
 //    public String getEmail() {

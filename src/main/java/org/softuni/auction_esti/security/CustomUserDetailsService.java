@@ -1,6 +1,6 @@
 package org.softuni.auction_esti.security;
 
-import org.softuni.auction_esti.domain.entities.UserPassword;
+import org.softuni.auction_esti.domain.entities.User;
 import org.softuni.auction_esti.repository.UserPasswordRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -25,14 +25,14 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        UserPassword user = userPasswordRepository.findByEmail(username)
+        User user = userPasswordRepository.findByEmail(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Email " + username + "not found"));
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
                 getAuthorities(user));
 
     }
 
-    private static Collection<? extends GrantedAuthority> getAuthorities(UserPassword user) {
+    private static Collection<? extends GrantedAuthority> getAuthorities(User user) {
         String[] userRoles = user.getRoles().stream().map((role) -> role.getName()).toArray(String[]::new);
         Collection<GrantedAuthority> authorities = AuthorityUtils.createAuthorityList(userRoles);
         return authorities;
