@@ -36,7 +36,7 @@ public class UserController extends BaseController {
 
     @GetMapping("/login")
     public ModelAndView login(Map<String, Local> map, @ModelAttribute("user") UserLoginBindingModel userLoginBindingModel) {
-        return this.view("login");
+        return super.view("login",userLoginBindingModel);
     }
 
     // @NoCaptcha

@@ -28,6 +28,7 @@ public class DBMessageSource extends AbstractMessageSource {
             languageRepository.findByMessageKeyAndLocale(key, LOCAL_CODE_EN);
         }
 
+        System.err.println(" ------- > key" + key + " ----- >  locale : " + locale);
         return new MessageFormat(message.getContent(), locale);
     }
 }

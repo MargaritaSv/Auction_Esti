@@ -1,64 +1,47 @@
-<h1 class="text-center">Login</h1>
-<hr class="bg-resev hr-2"/>
-<form id="contact-form" class="w-25 mx-auto" th:method="post" th:action="@{/userDetails/login}"
-      th:object="${userDetails}">
-    <!--<th:block th:each="error : ${errors}">-->
-    <!--<h5 class="label label-danger text-danger" th:text="${error}"></h5>-->
-    <!--</th:block>-->
-    <div class="form-group" th:classappend="${#fields.hasErrors('nickname')}? 'text-danger'">
-        <label for="username">Username</label>
-        <input type="text" class="form-control text-input" th:field="*{nickname}" id="username"
-               placeholder="Username..." name="nickname">
-        <small th:each="error : ${#fields.errors('nickname')}" th:text="${error}"></small>
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" th:field="*{password}" class="form-control text-input" id="password"
-               placeholder="Password..." name="password">
-        <small th:each="error : ${#fields.errors('password')}" th:text="${error}"></small>
-    </div>
-    <!--<div class="form-group">-->
-    <!--<input type="text" th:field="*{password}"></input>-->
-    <!--<input th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name-->
-    <!--Error</input>-->
-    <!--</div>-->
-    <div class="button-holder d-flex justify-content-around">
-        <button type="submit" class="btn btn-primary bg-resev">Login</button>
-    </div>
-</form>
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <div class="login100-form-title">
+					<span class="login100-form-title-1">
+						Sign In
+					</span>
+            </div>
 
-<!--<div id="form-container">-->
-<!--<div class="header">Log in to your account</div>-->
-<!--<form id="contact-form" class="w-25 mx-auto" th:method="post" th:action="@{/userDetails/login}"-->
-<!--th:object="${viewModel}">-->
-<!--<div class="sothebys-input-container">-->
-<!--<div class="sothebys-input error">-->
-<!--<label class="sothebys-textfield-placeholder" for="email">Email Address</label>-->
-<!--<input placeholder="Email Address" type="email" id="email" value="" name="email">-->
-<!--&lt;!&ndash;<div class="error-text visible">This email address is not valid</div>&ndash;&gt;-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="sothebys-input-container">-->
-<!--<div class="sothebys-input">-->
-<!--<label class="sothebys-textfield-placeholder" for="password">Password</label>-->
-<!--<input placeholder="Password" type="password" id="password" value="" name="password">-->
-<!--<div class="error-text">Password cannot be empty</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--&lt;!&ndash;<div id="login-forgot-password"><a&ndash;&gt;-->
-<!--&lt;!&ndash;href="/login?state=g6Fo2SBJTS1qZW9VNldvSmwyME1GbFU2VGRYMnMtSWM0ZVNNNqN0aWTZIGQzbk1uVC1maGNSNzdBaFF3WDZxRGp4cW5QSmNDMGM4o2NpZNkgTTBlZ2g4cDhOc3dkR002WDUzanAxMjhhMmJUT0hOMkU&amp;client=M0egh8p8NswdGM6X53jp128a2bTOHN2E&amp;protocol=oauth2&amp;redirect_uri=https%3A%2F%2Fwww.sothebys.com%2Fapi%2Fauth0callback%3Fresource%3DfromHeader%26language%3Den%26src%3D%26ta%3D%26login_hint%3D&amp;audience=https%3A%2F%2Fcustomer.api.sothebys.com&amp;ui_locales=en&amp;scope=openid%20email%20offline_access&amp;response_type=code&amp;login_hint=eyJ0YWIiOiJmb3Jnb3QtcGFzc3dvcmQifQ%3D%3D">Forgot&ndash;&gt;-->
-<!--&lt;!&ndash;Password?</a></div>&ndash;&gt;-->
-<!--&lt;!&ndash;<div id="error-box"></div>&ndash;&gt;-->
-<!--<div class="sothebys-button-container">-->
-<!--<button class="sothebys-button disabled " id="login-button-id">Log in</button>-->
-<!--</div>-->
-<!--<div class="form-group">-->
-<!--<label>-->
-<!--<input type="checkbox" name="remember-me"> Remember Me-->
-<!--</label>-->
-<!--</div>-->
-<!--</form>-->
-<!--<div id="footer">Don't have an account? <a-->
-<!--href="/login?state=g6Fo2SBJTS1qZW9VNldvSmwyME1GbFU2VGRYMnMtSWM0ZVNNNqN0aWTZIGQzbk1uVC1maGNSNzdBaFF3WDZxRGp4cW5QSmNDMGM4o2NpZNkgTTBlZ2g4cDhOc3dkR002WDUzanAxMjhhMmJUT0hOMkU&amp;client=M0egh8p8NswdGM6X53jp128a2bTOHN2E&amp;protocol=oauth2&amp;redirect_uri=https%3A%2F%2Fwww.sothebys.com%2Fapi%2Fauth0callback%3Fresource%3DfromHeader%26language%3Den%26src%3D%26ta%3D%26login_hint%3D&amp;audience=https%3A%2F%2Fcustomer.api.sothebys.com&amp;ui_locales=en&amp;scope=openid%20email%20offline_access&amp;response_type=code&amp;login_hint=eyJ0YWIiOiJzaWdudXAifQ%3D%3D">Sign-->
-<!--up</a></div>-->
-<!--</div>-->
+            <form id="login100-form validate-form" class="w-50 mx-auto" th:method="post" th:action="@{/user/login}"
+                  th:object="${viewModel}">
+                <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+                    <span class="label-input100">Username</span>
+                    <input class="input100" type="text" name="username" placeholder="Enter username">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input m-b-18" data-validate="Password is required">
+                    <span class="label-input100">Password</span>
+                    <input class="input100" type="password" name="pass" placeholder="Enter password">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="flex-sb-m w-full p-b-30 m-1">
+                    <div class="contact100-form-checkbox">
+                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                        <label class="label-checkbox100" for="ckb1">
+                            Remember me
+                        </label>
+                    </div>
+
+                    <div>
+                        <a href="#" class="txt1">
+                            Forgot Password?
+                        </a>
+                    </div>
+                </div>
+
+                <div class="container-login100-form-btn m-1">
+                    <button class="login100-form-btn">
+                        Login
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

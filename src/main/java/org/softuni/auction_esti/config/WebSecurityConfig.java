@@ -1,9 +1,9 @@
 package org.softuni.auction_esti.config;
 
+import org.softuni.auction_esti.security.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -22,12 +22,14 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true, proxyTargetClass = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Autowired
-    private UserDetailsService userDetailsService;
+    private CustomUserDetailsService userDetailsService;
 
     @Autowired
     private DataSource dataSource;
 
+    //TODO: check lifecycle !
 //    @Autowired
 //    public WebSecurityConfig(UserDetailsService userDetailsService, DataSource dataSource) {
 //        this.userDetailsService = userDetailsService;
@@ -50,32 +52,32 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .headers()
-                    .frameOptions().sameOrigin()
-                    .and()
+                .frameOptions().sameOrigin()
+                .and()
                 .authorizeRequests()
-                    .antMatchers("/resources/*","/css/**","/images/**","/js/**").permitAll()
-                    .antMatchers("/","/department/**","/private/**").permitAll()
-                    .antMatchers("/admin/**").hasRole("ADMIN")
-                    .anyRequest().authenticated()
-                    .and()
+                .antMatchers("/resources/*", "/css/**", "/images/**", "/js/**").permitAll()
+                .antMatchers("/", "/department/**", "/private/**", "/user/**").permitAll()
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .anyRequest().authenticated()
+                .and()
                 .formLogin()
-                    .loginPage("/login")
-                    .defaultSuccessUrl("/home")
-                    .failureUrl("/login?error")
-                    .permitAll()
-                    .and()
+                .loginPage("/login")
+                .defaultSuccessUrl("/")
+                .failureUrl("/login?error")
+                .permitAll()
+                .and()
                 .logout()
-                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                    .logoutSuccessUrl("/login?logout")
-                    .deleteCookies("my-remember-me-cookie")
-                    .permitAll()
-                    .and()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login?logout")
+                .deleteCookies("my-remember-me-cookie")
+                .permitAll()
+                .and()
                 .rememberMe()
-                    //.key("my-secure-key")
-                    .rememberMeCookieName("my-remember-me-cookie")
-                    .tokenRepository(persistentTokenRepository())
-                    .tokenValiditySeconds(24 * 60 * 60)
-                    .and()
+                //.key("my-secure-key")
+                .rememberMeCookieName("my-remember-me-cookie")
+                .tokenRepository(persistentTokenRepository())
+                .tokenValiditySeconds(24 * 60 * 60)
+                .and()
                 .exceptionHandling()
         ;
     }
