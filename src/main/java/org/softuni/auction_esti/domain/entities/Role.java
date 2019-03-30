@@ -9,7 +9,7 @@ import java.util.List;
 public class Role {
     public static final Integer ROLE_ADMIN = 1;
     public static final Integer ROLE_MODERATOR = 2;
-    public static final Integer ROLE_USER = 3;
+    public static final String ROLE_USER = "ROLE_USER";
 
 
     private Integer id;
@@ -17,6 +17,11 @@ public class Role {
     private List<User> users;
 
     public Role() {
+    }
+
+    public Role(String name, List<User> users) {
+        this.setUsers(users);
+        this.setName(name);
     }
 
     @Id

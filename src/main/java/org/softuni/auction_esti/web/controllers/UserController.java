@@ -41,7 +41,7 @@ public class UserController extends BaseController {
 
     // @NoCaptcha
     @PostMapping("/login")
-    public ModelAndView loginConfirm(Map<String, Local> map, ModelAndView modelAndView, @Validated @ModelAttribute("user") UserLoginBindingModel userLoginBindingModel,
+    public ModelAndView loginConfirm(Map<String, Local> map, ModelAndView modelAndView, @Validated @ModelAttribute("user") UserLoginBindingModel bindingModel,
                                      BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
@@ -52,14 +52,14 @@ public class UserController extends BaseController {
 //                    .map(e -> e.getDefaultMessage())
 //                    .collect(Collectors.toList()));
 
-            return super.view("login", userLoginBindingModel);
+            return super.view("login", bindingModel);
         }
 
-//        UserPasswordServiceModel userFromDB = this.userService.logUser(userLoginBindingModel.getNickname());
-//
-//        if (userFromDB == null || !userFromDB.getPassword().equals(userLoginBindingModel.getPassword())) {
-//            return this.view("/user/login");
-//        }
+        UserPasswordServiceModel userFromDB = this.userService.logUser(bindingModel.getEmail());
+
+        if (userFromDB == null || !userFromDB.getPassword().equals(bindingModel.getPassword())) {
+            return super.view("/login");
+        }
 
         return this.redirect("/");
     }

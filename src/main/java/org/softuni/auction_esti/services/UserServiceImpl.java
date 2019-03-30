@@ -5,6 +5,7 @@ import org.softuni.auction_esti.domain.entities.Role;
 import org.softuni.auction_esti.domain.entities.User;
 import org.softuni.auction_esti.domain.entities.UserDetails;
 import org.softuni.auction_esti.domain.models.binding.UserRegisterBindingModel;
+import org.softuni.auction_esti.domain.models.sevice.UserPasswordServiceModel;
 import org.softuni.auction_esti.repository.UserPasswordRepository;
 import org.softuni.auction_esti.repository.UserDetailsRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.validation.Validator;
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -46,22 +48,34 @@ public class UserServiceImpl implements UserService {
         UserDetails userDetails = this.modelMapper.map(bindingModel, UserDetails.class);
         User user_login = this.modelMapper.map(bindingModel, User.class);
 
-        this.userDetailsRepository.save(userDetails);
+        this.userDetailsRepository.saveAndFlush(userDetails);
 
         user_login.setUserId(userDetails);
         user_login.setPassword(this.bCryptPasswordEncoder.encode(bindingModel.getPassword()));
-        user_login.setRoles(new LinkedHashSet<>(Role.ROLE_USER));
 
+
+//role.setName(Role.ROLE_USER);
+//role.setUsers(new LinkedList<>().add(user_login));
         this.userPasswordRepository.saveAndFlush(user_login);
+
+//        List<User> users = new LinkedList<>();
+//        users.add(user_login);
+//
+//        Role role = new Role(Role.ROLE_USER, users);
+//
+//        LinkedHashSet linkedHashSet = new LinkedHashSet();
+//        linkedHashSet.add(role);
+//        user_login.setRoles(linkedHashSet);
 
         return true;
     }
+
     // )
-//    @Override
-//    public UserPasswordServiceModel logUser(String nickname) {
-////        if (this.validator.validate()) {
-////        }
-//        return this.modelMapper.map(
-//                this.userPasswordRepository.findByNickname(nickname), UserPasswordServiceModel.class);
-//    }
+    @Override
+    public UserPasswordServiceModel logUser(String email) {
+//        if (this.validator.validate()) {
+//        }
+        return this.modelMapper.map(
+                this.userPasswordRepository.findByEmail(email), UserPasswordServiceModel.class);
+    }
 }

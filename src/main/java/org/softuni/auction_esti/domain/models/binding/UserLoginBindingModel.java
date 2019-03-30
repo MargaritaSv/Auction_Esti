@@ -5,20 +5,20 @@ import javax.validation.constraints.NotNull;
 
 public class UserLoginBindingModel {
 
-    private String nickname;
+    private String email;
     private String password;
 
     public UserLoginBindingModel() {
     }
 
     @NotNull
-    @NotEmpty(message = "Name is required")
-    public String getNickname() {
-        return nickname;
+    @NotEmpty(message = "Email is required")
+    public String getEmail() {
+        return email;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @NotNull

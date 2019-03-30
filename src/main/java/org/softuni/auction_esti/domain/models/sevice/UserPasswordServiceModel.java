@@ -6,7 +6,7 @@ public class UserPasswordServiceModel {
 
     private Integer id;
     private UserDetails userDetailsId;
-    private String nickname;
+    private String email;
     private String password;
 
     public UserPasswordServiceModel() {
@@ -28,12 +28,12 @@ public class UserPasswordServiceModel {
         this.userDetailsId = userDetailsId;
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getEmail() {
+        return email;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
